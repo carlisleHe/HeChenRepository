@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+			http://www.springframework.org/schema/jee 
+			http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+			http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+            http://www.springframework.org/schema/mvc   
+        	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd" 
+	default-lazy-init="false">
+	<context:component-scan base-package="com.cib.alipayserver,com.cib.alipay" />
+	<context:annotation-config />
+	<!-- 数据库连接配置 -->
+	<import resource="classpath*:serviceContext-datasource.xml"/>
+	<import resource="classpath*:alipay-scheduling.xml"/>
+	<import resource="classpath:action-context.xml" />
+	<import resource="classpath*:runtime-config.xml"/>
+    <import resource="classpath*:alipay-base.xml"/>
+	<bean id="alipaySessionFactory" class="com.intensoft.dao.hibernate.AnnotationSessionFactoryBeanExt">
+        <property name="dataSource" ref="alipaybank.dataSource" />
+        <property name="namingStrategy">
+            <bean class="org.hibernate.cfg.ImprovedNamingStrategy" />
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.InformixDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.cache.use_query_cache">false</prop>
+                <prop key="hibernate.use_outer_join">false</prop>
+				<prop key="hibernate.query.substitutions">true=1, false=0</prop>                
+            </props>
+        </property>
+        <property name="entityPackages">
+            <list>
+                <value>com.cib.alipayserver</value>
+                <value>com.cib.alipay</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="throwableTranslate" class="com.intensoft.exception.locale.SimpleExceptionTranslate">
+        <property name="messageSource">
+            <bean class="org.springframework.context.support.ResourceBundleMessageSource">
+                <property name="basenames">
+                    <list>
+                        <value>exceptions</value>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean> 
+    <!-- 分发器 算法  --> 
+    <bean id="NATIVE_HASH" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">    
+        <property name="staticField" value="com.cib.alipay.proxy.HashAlgorithm.NATIVE_HASH" />    
+    </bean>
+    <bean id="KETAMA_HASH" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">    
+        <property name="staticField" value="com.cib.alipay.proxy.HashAlgorithm.KETAMA_HASH" />    
+    </bean>     
+    <!--数组取模算法实现  -->
+    <bean id="arrayModNodeLocator" class="com.cib.alipay.proxy.ArrayModNodeLocator">
+	    <constructor-arg  name="alg">
+	        <ref bean="NATIVE_HASH"/>
+	    </constructor-arg>
+    </bean>
+     <!--一致哈希算法实现  -->
+     <bean id="ketamaNodeLocator" class="com.cib.alipay.proxy.KetamaNodeLocator">
+	    <constructor-arg  name="alg">
+	        <ref bean="KETAMA_HASH"/>
+	    </constructor-arg>
+	    <!-- 每一个服务器虚拟节点数 -->
+	    <constructor-arg type="int" name="numReps" value="160"></constructor-arg>
+	    <!-- 服务器失败后处理策略   -->
+	    <constructor-arg  name="it" value="ARRAY"></constructor-arg>
+    </bean>	
+	<!-- 线程池设置 -->
+	<bean id ="msgTaskExecutor"  class ="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" >
+	    <property name ="corePoolSize" value ="5" /> 
+	    <property name ="keepAliveSeconds" value ="300" /> 
+	    <property name ="maxPoolSize" value ="15" /> 
+	    <property name ="queueCapacity" value ="25" /> 
+    </bean>
+    	<!-- 事务配置 -->
+    <bean id="alipayTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="alipaySessionFactory" />
+    </bean>
+	<!-- 使用annotation定义事务 -->
+    <tx:annotation-driven transaction-manager="alipayTransactionManager" />
+    <tx:advice id="alipayadvice" transaction-manager="alipayTransactionManager"/>
+	
+</beans>

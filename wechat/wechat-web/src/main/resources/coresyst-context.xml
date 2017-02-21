@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-lazy-init="false">
+	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
+	
+	<context:component-scan base-package="com.intensoft.coresyst" />
+	<context:component-scan  base-package="com.cib.openbank.txn" />
+	<import resource="classpath:coresyst-outgoing.xml" />
+	<bean id="txnServiceProcessor"  class="com.intensoft.coresyst.TxnServiceProcessor" >
+		<property name="test" value="false"/>
+	</bean>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="placeholderPrefix">
+			<value>@[</value>
+		</property>
+		<property name="placeholderSuffix">
+			<value>]</value>
+		</property>
+		<property name="location">
+			<value>classpath:runtime.properties</value>
+		</property>
+		<property name="ignoreResourceNotFound">
+			<value>false</value>
+		</property>
+	</bean>
+	<!-- 发送核心Mntr参数类 -->
+	<bean id="CIBTxnAdapterPara" primary="true" class="com.intensoft.coresyst.CIBTxnAdapterPara">
+		<property name="attachmentTempPath">
+			<value>@[location.temp]</value>
+		</property>
+		<property name="defaultDQDH">
+			<value>@[txn.defaultDQDH]</value>
+		</property>
+		<property name="defaultJGDH">
+			<value>@[txn.defaultJGDH]</value>
+		</property>
+		<property name="defaultJYGY">
+			<value>@[txn.defaultJYGY]</value>
+		</property>
+		<property name="fixTxnHeader">
+			<value>999908999999999999999</value>
+		</property>
+		<property name="txnComm">
+            <bean class="com.cib.openbank.txn.client.CIBCTSPCommImpl"/>
+        </property>
+	</bean>
+	<!-- 发送核心Tuxedo参数类 -->
+	<bean id="tuxedoCIBTxnAdapterPara" primary="true" class="com.intensoft.coresyst.CIBTxnAdapterPara">
+		<property name="attachmentTempPath">
+			<value>@[location.temp]</value>
+		</property>
+		<property name="defaultDQDH">
+			<value>@[tuxedo.defaultDQDH]</value>
+		</property>
+		<property name="defaultJGDH">
+			<value>@[tuxedo.defaultJGDH]</value>
+		</property>
+		<property name="defaultJYGY">
+			<value>@[tuxedo.defaultJYGY]</value>
+		</property>
+		<property name="fixTxnHeader">
+			<value></value>
+		</property>
+		<property name="txnComm">
+            <bean class="com.cib.openbank.txn.client.CIBCTSPCommImpl"/>
+        </property>
+	</bean>
+</beans>

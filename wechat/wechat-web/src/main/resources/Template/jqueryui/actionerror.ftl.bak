@@ -1,0 +1,11 @@
+<#if (actionErrors?exists && actionErrors?size > 0)>
+	<script type="text/javascript">
+  $(function(){
+	
+	$(document).ready(
+		function() {
+				alert('cccccccccccbbbbbbcccccccccc');
+	})
+})
+	</script>
+</#if>
