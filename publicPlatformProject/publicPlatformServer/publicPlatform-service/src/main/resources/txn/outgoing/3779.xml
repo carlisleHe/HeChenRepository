@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="3779" target="tuxedo" isFixTxnHeader="false" >
+		<annotation>互联网贷款申请</annotation>
+		<Request name="MAIN">
+			  <ItemInfo name="header" ref="TuxedoRequestHeader"/>
+		      <ItemInfo type="DATE" name="JYRQ" descript="交易日期"/>
+		      <ItemInfo length="3" name="QDZL" descript="渠道种类" default="W"/>
+		      <ItemInfo length="60" name="KHXM"  descript="客户姓名"/>
+		      <ItemInfo length="1" name="XB"  descript="性别"/>
+		      <ItemInfo length="10" name="ZJLX"  descript="证件类型"/>
+		      <ItemInfo length="25" name="ZJHM"  descript="证件号码"/>
+		      <ItemInfo type="NUMBER_15_2" name="NSQJE"  descript="拟申请金额"/>
+		      <ItemInfo type="NUMBER_03_0" name="NSQQX"  descript="拟申请期限"/>
+		      <ItemInfo length="100" name="NSQDKYT"  descript="拟申请贷款用途"/>
+			  <ItemInfo length="20" name="LXDH"  descript="联系电话"/>
+			  <ItemInfo type="DATE" name="SQRQ"  descript="申请日期"/>
+			  <ItemInfo length="10" name="HLWSQLY"  descript="互联网申请来源"/>
+			  <ItemInfo length="40" name="SQLYWYBH"  descript="申请来源唯一编号"/>
+			  <ItemInfo length="10" name="GZSZSF"  descript="工作所在省份"/>
+			  <ItemInfo length="10" name="GZSZCS"  descript="工作所在城市"/>
+			  <ItemInfo length="10" name="GZSZQ"  descript="工作所在区"/>
+			  <ItemInfo length="10" name="HJSZSF"  descript="户籍所在省份"/>
+			  <ItemInfo length="10" name="HJSZCS"  descript="户籍所在城市"/>
+			  <ItemInfo length="60" name="GZDWM"  descript="工作单位名城"/>
+			  <ItemInfo length="60" name="GZDWDZ"  descript="工作单位地址"/>
+			  <ItemInfo type="NUMBER_15_2" name="YSL"  descript="月收入"/>
+			  <ItemInfo type="NUMBER_15_2" name="MXJRZC"  descript="本人及家庭名下金融资产"/>
+			  <ItemInfo type="NUMBER_03_0" name="MXBDFC"  descript="本人及家庭名下本地房产"/>
+			  <ItemInfo length="20" name="BZ1"  descript="备注1"/>
+			  <ItemInfo length="20" name="BZ2"  descript="备注2"/>
+			  <ItemInfo length="20" name="BZ3"  descript="备注3"/>
+			  <ItemInfo length="20" name="BZ4"  descript="备注4"/>
+			  <ItemInfo length="20" name="BZ5"  descript="备注5"/>
+			  <ItemInfo length="30" name="BZ6"  descript="备注6"/>
+			  <ItemInfo length="30" name="BZ7"  descript="备注7"/>
+			  <ItemInfo length="30" name="BZ8"  descript="备注8"/>
+			  <ItemInfo length="30" name="BZ9"  descript="备注9"/>
+			  <ItemInfo length="30" name="BZ10"  descript="备注10"/>
+		</Request>
+		<Response name="MAIN">
+		      <ItemInfo name="header" ref="TuxedoResponseHeader"/>
+      		  <ItemInfo length="10" name="HLWSQLY"  descript="互联网申请来源"/>
+			  <ItemInfo length="40" name="SQLYWYBH"  descript="申请来源唯一编号"/>
+      		  <ItemInfo length="17" name="YSQXYBH" descript="预申请协议编号;年后两位+月+日+渠道代号+8位流水号
+网银代号为W，自助为Z、呼叫中心为H
+则06年12月1日呼叫中心当天上报的第123个预审批申请为：061201H00000123
+      		  " />
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="header" ref="TuxedoResponseHeader" descript="TUX头"/>
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

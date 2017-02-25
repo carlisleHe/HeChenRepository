@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+  <TxnDefine id="3416" target="tuxedo">
+    <annotation >信用卡修改申请/重置查询密码</annotation>
+    <Request name="MAIN">
+      <ItemInfo name="header" ref="3410TuxdoRequestHeader"/>
+      
+      <ItemInfo name="ZJYDM" length="4" default="3416" descript="子交易代码"/>
+      <ItemInfo name="DQDH" length="2" default="06" descript="地区代号"/>
+      <ItemInfo name="JGDH" length="3" default="101" descript="机构代号"/>
+      <ItemInfo name="JYGY" length="4" descript="交易柜员" default="9999"/>
+      <ItemInfo name="ZDDH" length="8" descript="终端代号" default="00000001"/>
+      <ItemInfo name="QDZL" length="3" default="208" descript="渠道种类"/>
+      <!-- BITMAP各位的含义：第一位：从证件类型→预留；第二位：从预留→CVV2；第三位：证件号码；第四位：电话号码；第五位：出生日期；第六位：手机号码 -->
+      <ItemInfo name="BITMAP" length="6" default="000000" descript="位图(各位含义看xml注释)"/>
+      <ItemInfo name="XYK_KH" length="16" descript="信用卡卡号"/>
+      <ItemInfo name="ZJZL" length="1" descript="证件种类"/>
+      <ItemInfo name="ZJHM" length="20" descript="证件号码"/>
+      <ItemInfo name="JTDH" length="20" descript="家庭电话"/>
+      <ItemInfo name="CSRQ" type="DATE" descript="出生日期"/>
+      <ItemInfo name="SJH" length="12" descript="手机号"/>
+      <ItemInfo name="XYKMM" length="6" descript="密码"/>
+      <ItemInfo name="CXSZBZ" length="1" descript="查询/设置标志：1-查询；空-申请/设置"/><!-- 查询/设置标志：1-查询；空-申请/设置 -->
+      <ItemInfo name="CVV2" length="3" descript="CVV2"/>
+    </Request>
+    <Response name="MAIN">
+      <ItemInfo name="header" ref="Z02ResponseHeader"/>
+      
+	  <ItemInfo name="XYKKH" length="16" descript="信用卡卡号"/>
+	  <ItemInfo name="CKRXM" length="30" descript="持卡人姓名" />
+	  <ItemInfo name="SFSZMM" length="1" descript="是否已设置查询密码" />
+    </Response>
+    <ExceptResp name="MAIN">
+		<ItemInfo name="header" ref="Z02ResponseHeader" />
+		<ItemInfo name="MSGID" type="NUMBER_05_0"/><!-- 信息标识 -->
+	</ExceptResp>
+  </TxnDefine>
+</TxnDefines>

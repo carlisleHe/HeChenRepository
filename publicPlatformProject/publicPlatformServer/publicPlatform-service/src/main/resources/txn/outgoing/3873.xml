@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="3873" target="Tuxedo" isFixTxnHeader="false">
+		<annotation>查询兴业卡开户机构</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="header" ref="Z02RequestHeader"/>
+			<ItemInfo name="ZHDH" length="18" descript="账户代号"/>
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader"/>
+           	<ItemInfo name="KHDQDH" length="2" descript="开户地区号"/>
+           	<ItemInfo name="KHJGDH" length="3" descript="开户机构号"/>
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader"/>
+			 <ItemInfo name="MSGID" type="NUMBER_05_0"/><!-- 信息标识 -->
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

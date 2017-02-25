@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<TxnDefines>
+	<TxnDefine id="2560"  target="Tuxedo" isFixTxnHeader="false">
+		<annotation>顺通卡客户信息查询</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="header" ref="Z02RequestHeader"/>
+			<ItemInfo name="SQGY" length="4" descript="授权柜员" />
+			<ItemInfo name="FWFS" length="1" descript="服务方式" />
+			<ItemInfo name="KH" length="11" descript="卡号" />
+			<ItemInfo name="MM" length="6" descript="查询密码" />
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader"/>
+			<ItemInfo name="KHXM" length="60" descript="客户姓名" />
+			<ItemInfo name="XB" length="1" descript="客户性别" />
+			<ItemInfo name="CSRQ" type="DATE" descript="出生日期" />
+			<ItemInfo name="ZJZL" length="1" descript="证件种类" />
+			<ItemInfo name="ZJHM" length="20" descript="证件号码" />
+			<ItemInfo name="DZ" length="60" descript="地址" />
+			<ItemInfo name="WLDZ" length="60" descript="网络地址" />
+			<ItemInfo name="DHHM" length="30" descript="电话号码" />
+			<ItemInfo name="BPJHM" length="20" descript="BP机号码" />
+			<ItemInfo name="YZBM" length="6" descript="邮政编码" />
+			<ItemInfo name="ZY" length="12" descript="职业" />
+			<ItemInfo name="KHJGDH" length="3" descript="开户机构代号" />
+			<ItemInfo name="KHGY" length="4" descript="开户柜员" />
+			<ItemInfo name="KHRQ" type="DATE" descript="开户日期" />
+			<ItemInfo name="PZDH" length="9" descript="凭证代号" />
+			<ItemInfo name="QYRQ" type="DATE" descript="启用日期" />
+			<ItemInfo name="YXRQ" type="DATE" descript="有效日期" />
+			<ItemInfo name="S7" length="12" descript="串7" />
+			<ItemInfo name="S8" length="12" descript="串8" />
+		</Response>
+		<ExceptResp name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader"/>
+            <ItemInfo name="MSGID" type="NUMBER_05_0"/><!-- 信息标识 -->
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="3419" isFixTxnHeader="false" target="tuxedo">
+		<annotation>信用卡账户查询</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02DCQueryRequestHeader" descript="Z02头"/>
+			<!--<ItemInfo name="3410ReqHeader" ref="Request3410Header" descript="" />-->
+			<ItemInfo length="4" name="JYDM1" descript="" default="3419" />
+			<ItemInfo length="2" name="DQDH1" descript="" default="06"/>
+			<ItemInfo length="3" name="JGDH1" descript="" default="101"/>
+			<ItemInfo length="4" name="JYGY1" descript="" default="9995"/>
+			<ItemInfo length="8" name="ZDDH1" descript="" default="00000001"/>
+			<ItemInfo descript="交易来源" length="3" name="JYLY" default="208" />
+			<ItemInfo descript="信用卡卡号" length="16" name="ZHDH" />
+			<ItemInfo descript="服务方式" length="1" name="FWFS" default="0" />
+			<ItemInfo descript="查询/取现密码" length="6" name="XYKMM" />
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+			<!--<ItemInfo descript="信息标识" name="MSGID" type="NUMBER_05_0" />
+			<ItemInfo descript="重复次数" name="CFCS" type="NUMBER_04_0" />
+			<ItemInfo type="DATE" descript="交易日期" name="JYRQ" />
+			<ItemInfo type="TIME" descript="交易时间" name="JYSJ" />
+			<ItemInfo descript="柜员流水" length="8" name="GYLS" />-->
+			<ItemInfo descript="账户名称1" length="30" name="ZHMC" />
+			<ItemInfo descript="账户名称2" length="30" name="SZMC" />
+			<ItemInfo descript="卡片种类" length="30" name="XYKZL" />
+			<ItemInfo descript="分行编号" name="FHBH" type="NUMBER_08_0" />
+			<ItemInfo descript="公司代码" length="10" name="GSDM" />
+			<ItemInfo descript="公司名称" length="30" name="GSMC" />
+			<ItemInfo descript="开户日期" name="KHRQ" type="DATE" />
+			<ItemInfo descript="信用额度" name="XYED" type="NUMBER_15_2" />
+			<ItemInfo descript="授权未请款金额" name="WQKED" type="NUMBER_15_2" />
+			<ItemInfo descript="目前可用额度" name="KYED" type="NUMBER_15_2" />
+			<ItemInfo descript="本币账面余额符合" length="1" name="RMBJEFH" />
+			<ItemInfo descript="本币账面余额" name="RMBZHYE" type="NUMBER_15_2" />
+			<ItemInfo descript="第二币种信用额度" name="XYED1X" type="NUMBER_15_2" />
+			<ItemInfo descript="第二币种可用额度" name="KYED1" type="NUMBER_15_2" />
+			<ItemInfo descript="美元账面余额符合" length="1" name="JEFH3" />
+			<ItemInfo descript="美元账面余额" name="ZHYE1" type="NUMBER_15_2" />
+			<ItemInfo descript="还款截止日期" name="ZZRQ" type="DATE" />
+			<ItemInfo descript="自动还款账号" length="32" name="FKDWZH" />
+			<ItemInfo descript="自动还款方式" length="1" name="KKFS" />
+			<ItemInfo descript="上次付款日期" name="SJYRQ" type="DATE" />
+			<ItemInfo descript="已付账款" name="JE1" type="NUMBER_15_2" />
+			<ItemInfo descript="逾期金额" name="JE2" type="NUMBER_15_2" />
+			<ItemInfo descript="逾期天数" name="TS" type="NUMBER_05_0" />
+			<ItemInfo descript="证件类型" length="1" name="ZJZL" />
+			<ItemInfo descript="证件号码" length="20" name="ZJHM" />
+			<ItemInfo descript="争议金额" name="JE3" type="NUMBER_15_2" />
+			<ItemInfo descript="调整金额" name="JE4" type="NUMBER_15_2" />
+			<ItemInfo descript="调整金额符号" length="1" name="TZJEFH" />
+			<ItemInfo descript="账户状态" length="1" name="QSZHZT" />
+			<ItemInfo descript="账户状态日期" name="ZHZTRQ" type="DATE" />
+			<ItemInfo descript="消费净额" name="XFJE" type="NUMBER_15_2" />
+			<ItemInfo descript="消费净额符号" length="1" name="XFJEFH" />
+			<ItemInfo descript="预借现金信用额度" name="QXXYED" type="NUMBER_15_2" />
+			<ItemInfo descript="预借现金可用额度" name="QXKYED" type="NUMBER_15_2" />
+			<ItemInfo descript="大宗购货信用额度" name="DZGWXYED" type="NUMBER_15_2" />
+			<ItemInfo descript="大宗购货可用额度" name="DZGWKYED" type="NUMBER_15_2" />
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

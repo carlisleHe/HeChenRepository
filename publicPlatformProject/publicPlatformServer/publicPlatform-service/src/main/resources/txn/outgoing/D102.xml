@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="D102" target="tuxedo">
+		<annotation>账户信息查询</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="header" ref="Z02RequestHeader" descript="Z02请求头"/>
+			<ItemInfo name="JYDM1" length="4" descript="内部交易代码" default="D102"/><!--  -->
+			<ItemInfo name="JJDM" length="6"  descript="基金代码"/><!--  -->
+			<ItemInfo name="ZJLX" length="1"  descript="用户证件类型"/><!--  -->
+			<ItemInfo name="ZJHM" length="32" descript="用户证件号码"/><!--  -->
+			<ItemInfo name="ZHDH" length="18" descript="银行卡号"/><!--  -->
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02响应头"/>
+			<ItemInfo name="YHJJZH" length="64" descript="用户在基金公司的账号"/><!--  -->
+			<ItemInfo name="KHMC" length="60" descript="用户姓名"/><!--  -->
+			<ItemInfo name="ZJLX" length="1" descript="用户证件类型"/><!--  -->
+			<ItemInfo name="ZJHM" length="32" descript="用户证件号码"/><!--  -->
+			<ItemInfo name="KHSJ" length="11" descript="用户手机"/><!--  -->
+			<ItemInfo name="ZHDH" length="32" descript="银行卡号"/><!--  -->
+			<ItemInfo name="XYBCCJE" type="NUMBER_15_2" descript="兴业宝持仓金额"/><!--  -->
+			<ItemInfo name="LSLJSY" type="NUMBER_15_2" descript="历史累计收益"/><!--  -->
+			<ItemInfo name="SYRSY" type="NUMBER_15_2" descript="上一日收益"/><!--  -->
+			<ItemInfo name="SYCRJE" type="NUMBER_15_2" descript="剩余可存入的金额"/>
+			<ItemInfo name="SSZQSX" type="NUMBER_15_2" descript="实时支取金额上限"></ItemInfo>
+		</Response>
+		<ExceptResp name="MAIN">
+	       <ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02异常头"/>
+   		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

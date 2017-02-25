@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+	<TxnDefine id="3431" target="tuxedo" isFixTxnHeader="false">
+		<annotation>信用卡密码验证</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02DCQueryRequestHeader" descript="Z02头"/>
+			<!--<ItemInfo name="3410ReqHeader" ref="Request3410Header"
+				descript="" />-->
+			<ItemInfo length="4" name="JYDM1" descript="" default="3431" />
+			<ItemInfo length="2" name="DQDH1" descript="" default="06"/>
+			<ItemInfo length="3" name="JGDH1" descript="" default="101"/>
+			<ItemInfo length="4" name="JYGY1" descript="" default="9995"/>
+			<ItemInfo length="8" name="ZDDH1" descript="" default="00000001"/>
+			<ItemInfo name="QDZL" length="3" default="208" descript="渠道种类" />
+			<ItemInfo name="XYK_KH" length="16" descript="信用卡卡号" />
+			<ItemInfo name="SFJYMM" length="1" default="0"
+				descript="是否校验密码	0-否 1-查询密码 2-取现密码" />
+			<ItemInfo name="XYKMM" length="6" descript="信用卡密码" />
+		</Request>
+		<Response name="MAIN">
+		 <ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+		  <!--<ItemInfo name="mntrResponseHeader" ref="MntrResponseHeader" descript="MNTR返回报文头"/>-->
+			<ItemInfo name="ZWXM" length="20" descript="中文姓名" />
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

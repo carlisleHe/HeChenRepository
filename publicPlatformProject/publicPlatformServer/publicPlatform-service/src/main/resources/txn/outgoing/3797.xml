@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="3797" target="tuxedo" isFixTxnHeader="false" >
+		<annotation>互联网贷款进度查询</annotation>
+		<Request name="MAIN">
+			  <ItemInfo name="header" ref="TuxedoRequestHeader"/>
+		      <ItemInfo type="DATE" name="JYRQ" descript="交易日期"/>
+		   	  <ItemInfo length="10" name="HLWSQLY"  descript="互联网申请来源"/>
+		   	  <ItemInfo length="40" name="SQLYWYBH"  descript="申请来源唯一编号"/>
+		</Request>
+		<Response name="MAIN">
+		      <ItemInfo name="header" ref="TuxedoResponseHeader"/>
+      		  <ItemInfo length="10" name="HLWSQLY"  descript="互联网申请来源"/>
+			  <ItemInfo length="40" name="SQLYWYBH"  descript="申请来源唯一编号"/>
+      		  <ItemInfo length="1" name="SQJD" descript="申请进度;0-已受理、1-审核中、2-已审批、3-拒绝、4-取消" />
+      		  <ItemInfo type="NUMBER_15_2" name="SPJE" descript="审批金额" />
+      		  <ItemInfo length="20" name="BZ1"  descript="备注1"/>
+			  <ItemInfo length="20" name="BZ2"  descript="备注2"/>
+			  <ItemInfo length="20" name="BZ3"  descript="备注3"/>
+			  <ItemInfo length="20" name="BZ4"  descript="备注4"/>
+			  <ItemInfo length="20" name="BZ5"  descript="备注5"/>
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="header" ref="TuxedoResponseHeader" descript="TUX头"/>
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

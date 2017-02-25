@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">  
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false"> 
+
+    <!-- ================================ 文件日志(同步)输出============================ -->
+    <!-- 业务日志，生产环境使用 -->  
+    <appender name="ALIPAY_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="log/alipaybank.log" />
+        <param name="Append" value="true" />
+        <param name="encoding" value="GBK"/>        
+        <param name="MaxFileSize" value="15000KB" />
+        <param name="MaxBackupIndex" value="50"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%x] %t [%-5p] %c - %m%n" />
+        </layout>
+    </appender>
+    
+    <!-- 记录CTSP交易报文，生产环境使用 -->  
+    <appender name="CTSP_TXN_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="log/alipay-txn.log" />
+        <param name="Append" value="true" />
+        <param name="MaxFileSize" value="30000KB" />
+        <param name="MaxBackupIndex" value="100"/>
+        <param name="encoding" value="GBK"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n" />
+        </layout>
+    </appender>
+    
+    <!-- HTTP日志，生产环境使用 -->  
+    <appender name="HTTP_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="log/alipaybank-http.log" />
+        <param name="Append" value="true" />
+        <param name="encoding" value="GBK"/>        
+        <param name="MaxFileSize" value="15000KB" />
+        <param name="MaxBackupIndex" value="50"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p] - %m%n" />
+        </layout>
+    </appender>
+
+    <!-- ================================ 文件日志(异步)输出============================ -->
+    <!-- 默认的异步文件日志输出，生产环境都采用此appender -->  
+    <appender name="ASYNC_ALIPAY_LOG" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="256"/>
+        <param name="LocationInfo" value="true"/>
+        <appender-ref ref="ALIPAY_LOG"/>
+    </appender>
+    <!-- HTTP异步文件日志输出，生产环境都采用此appender -->  
+    <appender name="ASYNC_HTTP_LOG" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="256"/>
+        <param name="LocationInfo" value="true"/>
+        <appender-ref ref="HTTP_LOG"/>
+    </appender>            
+    <appender name="ASYNC_CTSP_TXN_LOG" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="256"/>
+        <param name="LocationInfo" value="true"/>
+        <appender-ref ref="CTSP_TXN_LOG"/>
+    </appender>
+    <!-- ================================下面是记录日志包(package)路径====================== -->
+    <category name="com.opensymphony.xwork2">
+     	<param name="additivity" value="false"/>
+        <priority value="ERROR"/>
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+    <category name="org.apache.struts2">
+        <param name="additivity" value="false"/>
+        <priority value="ERROR"/>
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+    <category name="org.springframework">
+        <param name="additivity" value="false"/>
+        <priority value="ERROR" />
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+    <category name="org.hibernate">
+        <param name="additivity" value="false"/>
+        <priority value="FATAL" />
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+    <category name="com.cib.alipay.post">
+        <param name="additivity" value="false"/>
+        <priority value="INFO" />
+        <appender-ref ref="ASYNC_HTTP_LOG" />
+    </category>
+     <category name="com.cib.alipay.post.HttpAlipayUtil">
+        <param name="additivity" value="false"/>
+        <priority value="DEBUG" />
+        <appender-ref ref="ASYNC_HTTP_LOG" />
+    </category>
+    <category name="com.cib.alipay">
+        <param name="additivity" value="false"/>
+        <priority value="INFO" />
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+	<category name="statist.except">
+        <param name="additivity" value="false"/>
+        <priority value="INFO" />
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+    <category name="com.intensoft.coresyst">
+        <param name="additivity" value="false"/>
+        <priority value="INFO" />
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+    <category name="com.intensoft">
+        <param name="additivity" value="false"/>
+        <priority value="INFO" />
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+    <category name="com.cib.alipayserver">
+        <param name="additivity" value="false"/>
+        <priority value="DEBUG" />
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+	<category name="com.cib.alipayserver.schedule">
+        <param name="additivity" value="false"/>
+        <priority value="INFO" />
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </category>
+    <category name="com.cib.alipayserver.txn.client">
+        <param name="additivity" value="false"/>
+		<priority value="INFO" />
+        <appender-ref ref="ASYNC_CTSP_TXN_LOG" />
+    </category>
+    <root>
+        <priority value="ERROR" />
+        <appender-ref ref="ASYNC_ALIPAY_LOG" />
+    </root>
+
+</log4j:configuration> 

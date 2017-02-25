@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+  <TxnDefine id="3425" target="tuxedo" isFixTxnHeader="false">
+    <annotation>信用卡账户查询</annotation>
+    <Request name="MAIN">
+       <ItemInfo name="Z02Header" ref="Z02DCQueryRequestHeader" descript="Z02头"/>
+      <!--<ItemInfo name="3410ReqHeader" ref="Request3410Header" descript="" />-->
+      <ItemInfo length="4" name="JYDM1" descript="" default="3425" />
+	  <ItemInfo length="2" name="DQDH1" descript="" default="06"/>
+	  <ItemInfo length="3" name="JGDH1" descript="" default="101"/>
+	  <ItemInfo length="4" name="JYGY1" descript="" default="9995"/>
+	  <ItemInfo length="8" name="ZDDH1" descript="" default="00000001"/>
+      <ItemInfo name="QDZL" length="3" default="208" descript="交易来源"/>
+      <ItemInfo name="XYKKH" length="16" descript="信用卡卡号"/>
+      <ItemInfo name="SFJYMM" length="1" default="0" descript="是否校验密码 密码 0：否1：查询密码2:取款密码"/>
+      <ItemInfo name="HBZL" length="2" default="14" descript="货币种类 01－人民币 14－美元"/>
+      <ItemInfo name="XYKMM" length="6" descript="查询/取现密码"/>
+      <ItemInfo name="QSNY" length="6" descript="账单年月"/>
+      <ItemInfo name="SFDY" length="1" default="0" descript="是否打印 0－不打印(接口传) 1－打印(文件传)"/>
+    </Request>
+    <Response name="MAIN">
+     <ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+      <!--<ItemInfo type="NUMBER_05_0" name="MSGID" descript="信息标识"/>
+      <ItemInfo type="NUMBER_04_0" name="CFCS" descript="重复次数"/>
+      <ItemInfo type="DATE" name="JYRQ" descript="交易日期"/>
+      <ItemInfo name="JYSJ" length="6" descript="交易时间"/>
+      <ItemInfo name="GYLSH" length="8" descript="柜员流水号"/>-->
+      <ItemInfo type="NUMBER_15_2" name="JYJE" descript="本期应还款"/>
+      <ItemInfo type="NUMBER_15_2" name="JE" descript="上期账单金额"/>
+      <ItemInfo name="JEFH" length="1" descript="上期账单金额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="JE1" descript="已还金额"/>
+      <ItemInfo type="NUMBER_15_2" name="JE2" descript="本期账单金额"/>
+      <ItemInfo name="JEFH1" length="1" descript="本期账单金额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="LX" descript="循环利息"/>
+      <ItemInfo type="NUMBER_15_2" name="JE3" descript="罚金"/>
+      <ItemInfo type="NUMBER_15_2" name="JE4" descript="其他费用"/>
+      <ItemInfo type="NUMBER_15_2" name="JE5" descript="预借现金金额"/>
+      <ItemInfo type="NUMBER_15_2" name="JYJE1" descript="消费金额"/>
+      <ItemInfo type="NUMBER_15_2" name="JESZ" descript="卡片费用"/>
+      <ItemInfo type="NUMBER_15_2" name="JESZ1" descript="调整金额"/>
+      <ItemInfo name="JEFH2" length="1" descript="调整金额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="JESZ2" descript="最小还款额"/>
+      <ItemInfo name="ZZRQ" type="DATE" descript="还款截止日期"/>
+      <ItemInfo type="DATE" name="RQ" descript="账单日期"/>
+      <ItemInfo name="ZWXM" length="30" descript="账户姓名1"/>
+      <ItemInfo name="YWXM" length="30" descript="账户姓名2"/>
+      <ItemInfo name="ZKZH" length="19" descript="自扣还款"/>
+      <ItemInfo name="KKFS" length="1" descript="自扣还款方式"/>
+    </Response>
+    <ExceptResp name="MAIN">
+		<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+	</ExceptResp>
+  </TxnDefine>
+</TxnDefines>

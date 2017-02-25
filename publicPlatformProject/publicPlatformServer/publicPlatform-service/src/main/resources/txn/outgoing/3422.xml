@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+  <TxnDefine id="3422" target="tuxedo" isFixTxnHeader="false">
+    <annotation>信用卡卡片信息查询</annotation>
+    <Request name="MAIN">
+    	<ItemInfo name="Z02Header" ref="Z02DCQueryRequestHeader" descript="Z02头"/>
+     <!--<ItemInfo name="3410ReqHeader" ref="Request3410Header" descript="" />-->
+     <ItemInfo length="4" name="JYDM1" descript="" default="3422" />
+			<ItemInfo length="2" name="DQDH1" descript="" default="06"/>
+			<ItemInfo length="3" name="JGDH1" descript="" default="101"/>
+			<ItemInfo length="4" name="JYGY1" descript="" default="9995"/>
+			<ItemInfo length="8" name="ZDDH1" descript="" default="00000001"/>
+      <ItemInfo name="QDZL" length="3" default="208" descript="交易来源"/>
+      <ItemInfo name="XYK_KH" length="16" descript="信用卡卡号"/>
+      <ItemInfo name="SFJYMM" length="1" default="0" descript="是否校验密码 密码 0：否1：查询密码2:取款密码"/>
+      <ItemInfo name="XYKMM" length="6" default="" descript="查询/取现密码"/>
+    </Request>
+    <Response name="MAIN">
+      <ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+      <!--<ItemInfo name="mntrResponseHeader" ref="MntrResponseHeader" descript="MNTR返回报文头"/>-->
+      <ItemInfo name="ZJZL" length="1" descript="证件种类"/>
+      <ItemInfo name="ZJHM" length="20" descript="证件号码"/>
+      <ItemInfo name="ZWXM" length="20" descript="持卡人姓名"/>
+      <ItemInfo name="YWXM" length="35" descript="凸字姓名"/>
+      <ItemInfo name="QXRQ" length="8" descript="发卡日期"/>
+      <ItemInfo name="SXRQ" length="8" descript="开卡日期"/>
+      <ItemInfo name="RQ" length="8" descript="上次续卡日期"/>
+      <ItemInfo type="NUMBER_15_2" name="XYED" descript="信用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="KYED" descript="可用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="JESZ3" descript="大宗购货信用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="JESZ4" descript="大宗购货可用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="JESZ1" descript="预借现金信用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="JESZ2" descript="预借现金可用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="XYED1" descript="第二币种信用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="JESZ6" descript="第二币种可用额度"/>
+      <ItemInfo name="JLZT" length="1" descript="卡片状态"/>
+      <ItemInfo name="KHLB" length="1" descript="主副卡标志"/>
+      <ItemInfo name="GSRQ" length="8" descript="挂失日期"/>
+      <ItemInfo name="QSNY" length="6" descript="卡片有效期"/>
+      <ItemInfo name="ZJMC" length="30" descript="卡片种类描述"/>
+    </Response>
+    <ExceptResp name="MAIN">
+		<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+	</ExceptResp>
+  </TxnDefine>
+</TxnDefines>

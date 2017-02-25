@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+  <TxnDefine id="3446" target="tuxedo" isFixTxnHeader="false">
+    <annotation>信用卡账户查询</annotation>
+    <Request name="MAIN">
+       <ItemInfo name="Z02Header" ref="Z02DCQueryRequestHeader" descript="Z02头"/>
+      <!--<ItemInfo name="3410ReqHeader" ref="Request3410Header" descript="" /> -->
+      <ItemInfo length="4" name="JYDM1" descript="" default="3446" />
+	  <ItemInfo length="2" name="DQDH1" descript="" default="06"/>
+	  <ItemInfo length="3" name="JGDH1" descript="" default="101"/>
+	  <ItemInfo length="4" name="JYGY1" descript="" default="9995"/>
+	  <ItemInfo length="8" name="ZDDH1" descript="" default="00000001"/>
+      <ItemInfo name="QDZL" length="3" default="208" descript="交易来源"/>
+      <ItemInfo name="XYKKH" length="16" descript="信用卡卡号"/>
+      <ItemInfo name="ECDNR" length="37" descript="二磁道信息"/>
+      <ItemInfo name="SCDNR" length="104" descript="三磁道信息"/>
+      <ItemInfo name="FWFS" length="1" descript="2:不检查密码;1:检查查询密码"/>
+      <ItemInfo name="CXMM" length="6" descript="查询密码"/>
+    </Request>
+    <Response name="MAIN">
+      <ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+      <!--<ItemInfo type="NUMBER_05_0" name="MSGID" descript="信息标识"/>
+      <ItemInfo type="NUMBER_04_0" name="CFCS" descript="重复次数"/>
+      <ItemInfo type="DATE" name="JYRQ" descript="交易日期"/>
+      <ItemInfo name="JYSJ" length="6" descript="交易时间"/>
+      <ItemInfo name="GYLSH" length="8" descript="柜员流水号"/>-->
+      <ItemInfo name="XYKKH" length="16" descript="信用卡卡号"/>
+      <ItemInfo name="KHMC" length="30" descript="客户名称"/>
+      <ItemInfo name="KHMC2" length="30" descript="客户名称2"/>
+      <ItemInfo name="KPZL" length="30" descript="卡片种类"/>
+      <ItemInfo name="FHBH" length="4" descript="分行编号"/>
+      <ItemInfo name="GSDM" length="10" descript="公司代码"/>
+      <ItemInfo name="GSMC" length="36" descript="公司名称"/>
+      <ItemInfo type="DATE" name="KHRQ" descript="开户日期"/>
+      <ItemInfo type="NUMBER_15_2" name="XYED" descript="信用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="SQWQKJE" descript="授权未请款金额"/>
+      <ItemInfo type="NUMBER_15_2" name="MQKYED" descript="目前可用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="DEBZXYED" descript="第二币种信用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="DEBZKYED" descript="第二币种可用额度"/>
+      <ItemInfo name="ZHHKR" type="DATE" descript="最后还款日"/>
+      <ItemInfo name="RMBHKZH" length="19" descript="人民币自动还款帐号"/>
+      <ItemInfo name="ZKHKFS" length="1" descript="自扣还款方式"/>
+      <ItemInfo type="DATE" name="SCHKRQ" descript="上次还款日期"/>
+      <ItemInfo type="NUMBER_15_2" name="SCHKJE" descript="上次还款金额"/>
+      <ItemInfo type="NUMBER_15_2" name="YQJE" descript="逾期金额"/>
+      <ItemInfo name="YQTS" length="3" descript="逾期天数"/>
+      <ItemInfo name="ZJLX" length="1" descript="证件类型"/>
+      <ItemInfo name="ZJHM" length="20" descript="证件号码"/>
+      <ItemInfo type="NUMBER_15_2" name="ZYJE" descript="争议金额"/>
+      <ItemInfo name="BQTZJEFH" length="1" descript="本期调账金额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="BQTZJE" descript="本期调整金额"/>
+      <ItemInfo name="ZHZT" length="1" descript="账户状态"/>
+      <ItemInfo type="DATE" name="ZHZTRQ" descript="账户状态日期"/>
+      <ItemInfo name="BQXFJEFH" length="1" descript="本期消费净额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="BBBQXFJE" descript="本期消费净额(人民币)"/>
+      <ItemInfo type="NUMBER_15_2" name="YJXJXYED" descript="预借现金信用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="YJXJKYED" descript="预借现金可用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="FQFKXYED" descript="分期付款可用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="FQFKKYED" descript="分期付款可用额度"/>
+      <ItemInfo name="BBZMYEFH" length="1" descript="本币账面余额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="BBZMYE" descript="本币账面余额"/>
+      <ItemInfo name="WBZMYEFH" length="1" descript="外币账面余额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="WBZMYE" descript="外币账面余额"/>
+      <ItemInfo name="ZHLJZJF" length="10" descript="账户累计总积分"/>
+      <ItemInfo name="ZHLJKDHJF" length="10" descript="账户累计可兑换积分"/>
+      <ItemInfo type="NUMBER_15_2" name="BBYSZNJ" descript="本币预收滞纳金"/>
+      <ItemInfo type="NUMBER_15_2" name="WBYSZNJ" descript="外币预收滞纳金"/>
+      <ItemInfo type="NUMBER_15_2" name="WBYSQJE" descript="外币预授权金额"/>
+      <ItemInfo name="NFDM" length="2" descript="年费代码"/>
+      <ItemInfo name="LLDM" length="2" descript="利率代码"/>
+      <ItemInfo type="NUMBER_08_4" name="NLL" descript="年利率"/>
+      <ItemInfo name="MYBHKZH" length="20" descript="美元自动还款帐号"/>
+      <ItemInfo name="WBHKFS" length="1" descript="外币自扣还款方式"/>
+      <ItemInfo name="XXYY" length="1" descript="1"/>
+      <ItemInfo name="ZDR" length="2" descript="帐单日"/>
+      <ItemInfo type="DATE" name="ZJYCZDR" descript="最近一次账单日"/>
+      <ItemInfo type="DATE" name="BBSCJYRQ" descript="本币上次交易日期"/>
+      <ItemInfo type="DATE" name="WBSCJYRQ" descript="外币上次交易日期"/>
+      <ItemInfo type="DATE" name="WBSCHKRQ" descript="外币上次还款日期"/>
+      <ItemInfo type="NUMBER_15_2" name="WBSCHKJE" descript="外币上次还款金额"/>
+     <ItemInfo name="RMBZDJEFH" length="1" descript="人民币帐单金额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="RMBZDJE" descript="人民币帐单金额"/>
+      <ItemInfo name="MYBZDJEFH" length="1" descript="美元帐单金额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="MYZDJE" descript="美元帐单金额"/>
+      <ItemInfo name="BBZQYCLJYS" length="4" descript="本币账单周期已处理交易数"/>
+      <ItemInfo name="WBZQYCLJYS" length="4" descript="外币账单周期已处理交易数"/>
+      <ItemInfo type="NUMBER_15_2" name="YHRMBJE" descript="应还人民币最低金额"/>
+      <ItemInfo type="NUMBER_15_2" name="YHMYJE" descript="应还美元最低金额"/>
+      <ItemInfo type="NUMBER_15_2" name="BBBQYJXJ" descript="本币本期预借现金"/>
+      <ItemInfo type="NUMBER_15_2" name="WBBQYJXJ" descript="外币本期预借现金"/>
+      <ItemInfo name="BQXFJE" length="1" descript="本期消费净额(正负号)"/>
+      <ItemInfo type="NUMBER_15_2" name="WBBQXFJE" descript="外币本期消费净额"/>
+      <ItemInfo name="BBBQHKJEFH" length="1" descript="本币本期还款金额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="BBBQHKJE" descript="本币本期还款金额"/>
+      <ItemInfo name="WBBQHKJEFH" length="1" descript="外币本期还款金额符号"/>
+      <ItemInfo type="NUMBER_15_2" name="WBBQHKJE" descript="外币本期还款金额"/>
+      <ItemInfo type="NUMBER_15_2" name="BBYSLX" descript="本币应收利息"/>
+      <ItemInfo type="NUMBER_15_2" name="WBYSLX" descript="外币应收利息"/>
+      <ItemInfo name="WBBQTZJEFH" length="1" descript="外币本期调账金额符号" />
+      <ItemInfo type="NUMBER_15_2" name="WBBQTZJE" descript="外币本期调整金额"/>
+      <ItemInfo type="NUMBER_15_2" name="BBBQXZFYJE" descript="本币本期新增费用金额"/>
+      <ItemInfo type="NUMBER_15_2" name="WBBQXZFYJE" descript="外币本期新增费用金额"/>
+      <ItemInfo type="NUMBER_15_2" name="WBZYJE" descript="外币争议金额"/>
+      <ItemInfo type="NUMBER_15_2" name="WBYJXJKYED" descript="外币预借现金可用额度"/>
+      <ItemInfo type="DATE" name="XTRQ" descript="系统日期"/>
+      <ItemInfo type="NUMBER_15_2" name="FQFKJE" descript="分期付款金额"/>
+      <ItemInfo type="NUMBER_15_2" name="DQYHRMBJE" descript="当前应还人名币金额"/>
+      <ItemInfo type="NUMBER_15_2" name="DQYHMYJE" descript="当前应还美元金额"/>
+      <ItemInfo type="NUMBER_15_2" name="FQFKSQWQKJE" descript="分期付款授权未请款金额"/>
+      <ItemInfo type="NUMBER_15_2" name="FQFKSYBJZE" descript="分期付款剩余本金总额"/>
+      <ItemInfo type="NUMBER_15_2" name="BYXZFQFKE" descript="本月新增分期付款额"/>
+      <ItemInfo name="GSKBZ" length="1" descript="公司卡标志"/>
+      <ItemInfo name="YQHCXZT" length="1" descript="逾期或超限状态"/>
+      <ItemInfo type="DATE" name="SCXYEDGGRQ" descript="上次信用额度更改日期"/>
+      <ItemInfo name="XZDR" length="2" descript="新账单日"/>
+      <ItemInfo type="NUMBER_15_2" name="LSXYED" descript="临时信用额度"/>
+      <ItemInfo type="DATE" name="LSEDSXRQ" descript="临时额度生效日期"/>
+      <ItemInfo type="DATE" name="LSEDSHIXRQ" descript="临时额度失效日期"/>
+      <ItemInfo type="NUMBER_15_2" name="YJJFDZJE" descript="预借积分等值金额"/>
+      <ItemInfo type="NUMBER_15_2" name="DQXYED" descript="当前信用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="DEBZDQXYED" descript="第二币种当前信用额度"/>
+      <ItemInfo type="NUMBER_15_2" name="WBYQJE" descript="外币逾期金额"/>
+      <ItemInfo name="WBYQTS" length="3" descript="外币逾期天数"/>
+      <ItemInfo name="LJZJFFH" length="1" descript="累计总积分符号"/>
+      <ItemInfo name="LJKDHJFFH" length="1" descript="累计可兑换积分符号"/>
+      <ItemInfo name="BLZD" length="198" descript="保留字段"/>
+    </Response>
+    <ExceptResp name="MAIN">
+		<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+	</ExceptResp>
+  </TxnDefine>
+</TxnDefines>

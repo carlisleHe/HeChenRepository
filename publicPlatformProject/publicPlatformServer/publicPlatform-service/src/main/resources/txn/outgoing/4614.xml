@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+  <TxnDefine id="4614" target="tuxedo">
+    <annotation >信用卡设置交易密码</annotation>
+    <Request name="MAIN">
+      <ItemInfo name="header" ref="3410TuxdoRequestHeader"/>
+      
+      <ItemInfo name="ZJYDM" length="4" default="4614" descript="子交易代码"/>
+      <ItemInfo name="DQDH" length="2" default="06" descript="地区代号"/>
+      <ItemInfo name="JGDH" length="3" default="101" descript="机构代号"/>
+      <ItemInfo name="JYGY" length="4" descript="交易柜员" default="9999"/>
+      <ItemInfo name="ZDDH" length="8" descript="终端代号" default="00000001"/>
+      <ItemInfo name="QDZL" length="3" default="101" descript="渠道种类"/>
+      <ItemInfo name="XYK_KH" length="19" descript="信用卡卡号"/>
+      <ItemInfo name="ZJHM" length="18" descript="证件号码"/>
+      <ItemInfo name="JTDH" length="17" descript="家庭电话"/>
+      <ItemInfo name="CSNY" type="DATE" descript="出生年月"/>
+      <ItemInfo name="XMM" length="6" descript="新密码"/>
+      <ItemInfo name="ECD" length="37" descript="第二磁道"/>
+      <!-- BITMAP(0为不检查，1为检查)各位的含义：第一位：第一位：CVC2/CVV2；第二位：第二磁道；第三位：出生年月日；第四位：家庭电话(1：检查后4位)；
+      	第五位：手机号码；第六位：证件号码；第六位：证件号码;第八位：单位电话;第九位：母亲姓名 -->
+      <ItemInfo name="JCXMXZ" length="15" descript="检查项目选择(各位含义看xml注释)" default="100001000000000"/>
+      <ItemInfo name="CVV2" length="3" descript="CVV2"/>
+      <ItemInfo name="SJHM" length="12" descript="手机号码"/>
+      <ItemInfo name="HYBH" length="20" descript="会员编号"/>
+      <ItemInfo name="FJXX1" length="20" descript="IP地址"/>
+      <ItemInfo name="FJXX2" length="20" descript="MAC地址"/>
+      <ItemInfo name="DWDH" length="17" descript="单位电话"/>
+      <ItemInfo name="MQXM" length="20" descript="母亲姓名"/>
+    </Request>
+    <Response name="MAIN">
+      <ItemInfo name="header" ref="Z02ResponseHeader"/>
+      
+      <ItemInfo name="WJBZ" length="1" descript="文件标志, 1-需要传送文件;0-否"/>
+	  <ItemInfo name="OUTFILE" length="30" descript="文件名" />
+	  <ItemInfo name="XYKKH" length="16" descript="信用卡卡号"/>
+	  <ItemInfo name="CKRXM" length="30" descript="持卡人姓名" />
+    </Response>
+    <ExceptResp name="MAIN">
+		<ItemInfo name="header" ref="Z02ResponseHeader" />
+		<ItemInfo name="MSGID" type="NUMBER_05_0"/><!-- 信息标识 -->
+	</ExceptResp>
+  </TxnDefine>
+</TxnDefines>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+    <TxnDefine id="1110" target="tuxedo" isFixTxnHeader="false">
+        <annotation>微信实时任务退出通知</annotation>
+        <Request name="MAIN">
+            <ItemInfo name="header" ref="Z02RequestHeader" descript="Z02请求头"/>
+            <ItemInfo name="FWDM" length="4"  default="1110" descript="服务代码" notNull="true" />
+            <ItemInfo name="APPID" length="34" descript="微信APPID" notNull="true" />
+            <ItemInfo name="APPUSERID" length="40" descript="微信USERID" notNull="true" />
+            <ItemInfo name="APPNAME" length="120" descript="应用名称"  />
+        </Request>
+         <Response name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02响应头"/>
+        </Response>
+        <ExceptResp name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+		</ExceptResp>
+    </TxnDefine>
+</TxnDefines>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+	<TxnDefine id="2821" target="tuxedo" isFixTxnHeader="true">
+		<annotation>客户签约管理</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="header" ref="TuxedoRequestHeader"/>
+			<ItemInfo length="4" name="JYDM1" default="2821" descript="交易代码"/>
+			<ItemInfo length="2" name="DQDH1" descript="地区代号"/>
+			<ItemInfo length="3" name="JGDH1" descript="机构代号"/>
+			<ItemInfo length="4" name="JYGY1" default="9995" descript="交易柜员"/>
+			<ItemInfo length="8" name="ZDDH1" default="00000001" descript="终端代号"/>
+			<ItemInfo length="1" name="CZGN" descript="操作功能 1- 注册  5-销户"/>
+			<ItemInfo length="1" name="CXBJ" descript="显示类型"/>
+			<ItemInfo length="18" name="ZHDH" descript="账号"/>
+			<ItemInfo length="8" name="XYLXDM" descript="账户签约品种" default="0102000"/>
+			<ItemInfo length="32" name="DFXYBH" descript="对方标识"/>
+			<ItemInfo length="3" name="DZXXH" descript="地址小序号"/>
+			<ItemInfo length="3" name="DHXXH" descript="电话小序号"/>
+			<ItemInfo length="60" name="BZ" descript="备注"/>
+			<ItemInfo length="1" name="JLZT" descript="记录状态"/>
+			<ItemInfo length="50" name="WMJ" descript="文件名"/>
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="TuxedoResponseHeader"/>
+			<!--<ItemInfo type="NUMBER_05_0" name="MSGID" descript="信息标识"/>
+		    <ItemInfo type="NUMBER_04_0" name="CFCS" descript="重复次数"/>
+		    <ItemInfo type="DATE" name="JYRQ" descript="交易日期"/>
+		    <ItemInfo name="JYSJ" length="6" descript="交易时间"/>
+		    <ItemInfo name="GYLSH" length="8" descript="柜员流水号"/>-->
+		    <ItemInfo length="60" name="BZ" descript="备注"/>
+			<ItemInfo length="1" name="JLZT" descript="记录状态"/>
+			<ItemInfo length="50" name="WMJ" descript="文件名"/>
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="header" ref="TuxedoResponseHeader" descript="TUX头"/>
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

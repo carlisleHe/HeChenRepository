@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">  
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false"> 
+
+    <!-- ================================ 文件日志(同步)输出============================ -->
+    <!-- 业务日志，生产环境使用 -->  
+    <appender name="NOTIFY_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="log/openbank-notify.log" />
+        <param name="Append" value="true" />
+        <param name="encoding" value="UTF-8"/>        
+        <param name="MaxFileSize" value="15000KB" />
+        <param name="MaxBackupIndex" value="50"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p] %m%n" />
+        </layout>
+    </appender>
+
+    <!-- 控制台日志，开发阶段使用-->  
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <param name="Threshold" value="DEBUG"/>
+        <param name="encoding" value="UTF-8"/>  
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p] %m%n" />
+        </layout>
+    </appender>
+
+    <!-- ================================ 文件日志(异步)输出============================ -->
+    <!-- 默认的异步文件日志输出，生产环境都采用此appender -->  
+    <appender name="ASYNC_NOTIFY_LOG" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="256"/>
+        <param name="LocationInfo" value="true"/>
+        <appender-ref ref="NOTIFY_LOG"/>
+    </appender>
+    <!-- console 异步日志,开发环境都使用此appender，方便调试 -->  
+    <appender name="ASYNC_CONSOLE" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="64"/>
+        <param name="LocationInfo" value="true"/>
+        <appender-ref ref="CONSOLE"/>
+    </appender>
+            
+    <!-- ================================下面是记录日志包(package)路径====================== -->
+    <category name="com.opensymphony.xwork2">
+     	<param name="additivity" value="false"/>
+        <priority value="ERROR"/>
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </category>
+    <category name="org.apache.struts2">
+        <param name="additivity" value="false"/>
+        <priority value="ERROR"/>
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </category>
+    <category name="org.springframework">
+        <param name="additivity" value="false"/>
+        <priority value="ERROR" />
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </category>
+    <category name="org.hibernate">
+        <param name="additivity" value="false"/>
+        <priority value="FATAL" />
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </category>
+    <category name="com.intensoft.coresyst">
+        <param name="additivity" value="false"/>
+        <priority value="DEBUG" />
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </category>
+    <category name="com.intensoft">
+        <param name="additivity" value="false"/>
+        <priority value="DEBUG" />
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </category>
+    <category name="com.cib.openbank">
+        <param name="additivity" value="false"/>
+        <priority value="DEBUG" />
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </category>
+    <category name="com.cib.weixinserver">
+        <param name="additivity" value="false"/>
+        <priority value="DEBUG" />
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </category>
+    <category name="com.cib.weixin">
+        <param name="additivity" value="false"/>
+        <priority value="DEBUG" />
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </category>
+    <root>
+        <priority value="ERROR" />
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_NOTIFY_LOG" />
+    </root>
+
+</log4j:configuration> 

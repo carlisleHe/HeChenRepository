@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TxnDefines>
+    <TxnDefine id="D001"  target="Tuxedo">
+        <annotation>兴业宝账户查询</annotation>
+        <Request name="MAIN">
+            <ItemInfo name="header" ref="Z02RequestHeader"/>
+            <ItemInfo name="JYDM1" length="4" default="D001"/>
+            <ItemInfo name="ZJLX" length="1" descript="证件类型"/>
+            <ItemInfo name="ZJHM" length="32" descript="证件号码"/>
+            <ItemInfo name="ZHDH" length="18" descript="账户代号"/>
+        </Request>
+        <Response name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader"/>
+            <ItemInfo name="YHJJZH" length="64" descript="用户在基金公司的账号"/>
+            <ItemInfo name="KHMC" length="60" descript="客户名称"/>
+            <ItemInfo name="ZJLX" length="1" descript="证件类型"/>
+            <ItemInfo name="ZJHM" length="32" descript="证件号码"/>
+            <ItemInfo name="KHSJ" length="11" descript="用户手机"/>
+            <ItemInfo name="ZHDH" length="32" descript="银行卡号"/>
+            <ItemInfo name="YEBYE" type="NUMBER_15_2" descript="余额宝余额"/>
+            <ItemInfo name="LSLJSY" type="NUMBER_15_2" descript="历史累计收益"/>
+            <ItemInfo name="SYRSY" type="NUMBER_15_2" descript="上一日收益"/>
+            <ItemInfo name="SYCRJE" type="NUMBER_15_2" descript="剩余可存入的余额"/>
+            <ItemInfo name="SSZQSX" type="NUMBER_15_2" descript="实时支取余额上限"/>
+        </Response>
+        <ExceptResp name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader"/>
+        </ExceptResp>
+    </TxnDefine>
+</TxnDefines>

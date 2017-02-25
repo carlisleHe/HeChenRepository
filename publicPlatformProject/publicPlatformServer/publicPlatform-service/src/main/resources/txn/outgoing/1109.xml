@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+    <TxnDefine id="1109" target="tuxedo" isFixTxnHeader="false">
+        <annotation>上行微信接口</annotation>
+        <Request name="MAIN">
+            <ItemInfo name="header" ref="Z02RequestHeader" descript="Z02请求头"/>
+            <ItemInfo name="FWDM" length="4"  default="1109" descript="服务代码" notNull="true" />
+            <ItemInfo name="APPID" length="34" descript="微信APPID" notNull="true" />
+            <ItemInfo name="APPUSERID" length="40" descript="微信USERID" notNull="true" />
+            <ItemInfo name="APPNAME" length="120" descript="应用名称"  />
+            <ItemInfo name="JJKH" length="30" descript="绑定借记卡号"  />
+            <ItemInfo name="XYKH" length="30" descript="绑定信用卡号"  />
+            <ItemInfo name="KHNC" length="60" descript="客户昵称"  />
+            <ItemInfo name="LYXT" length="2" descript="来源系统" /> 
+            <ItemInfo name="FWLX" length="1" descript="服务类型" default="A" /> 
+            <ItemInfo name="YWLX" length="1" descript="业务类型" /> 
+            <ItemInfo name="XXNR" length="1024" descript="信息内容"  /> 
+        </Request>
+         <Response name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02响应头"/>
+        </Response>
+        <ExceptResp name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+		</ExceptResp>
+    </TxnDefine>
+</TxnDefines>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+  <TxnDefine id="5070" target="tuxedo" isFixTxnHeader="false">
+    <annotation>信用卡未出账单查询</annotation>
+    <Request name="MAIN">
+       <ItemInfo name="Z02Header" ref="Z023479RequestHeader" descript="Z023479头"/>
+      <ItemInfo length="4" name="JYDM1" descript="" default="5070" />
+      <ItemInfo length="1" name="CZBZ" descript="操作标志：1-查询" default="1"/>
+      <ItemInfo name="QDZL" descript="渠道种类" length="3" default="208" />
+	  <ItemInfo length="6" name="QTXTBH" descript="前台系统编号" default="Z00062"/>
+	  <ItemInfo type="DATE" name="QTXTRQ" descript="前台系统日期"/>
+	  <ItemInfo length="16" name="QTLSH" descript="前台流水号"/>
+      <ItemInfo name="XYKKH" length="16" descript="信用卡卡号"/>
+      <ItemInfo name="YBMZ" length="1" default="0" descript="是否校验密码 密码 0：否1：查询密码2:取款密码"/>
+      <ItemInfo name="XYKMM" length="6" default="" descript="查询/取现密码"/>
+      <ItemInfo name="HBZL" length="2" default="01" descript="货币种类:01:人民币14：美元"/>
+      <ItemInfo name="WJBB" length="2" default="01" descript="文件版本	app_ver	Char(2)	必输，赋值01"/>
+      <ItemInfo name="BZ" length="60"  descript="备注"/>
+      <ItemInfo name="Z02Header" ref="Z023479Footer"/>
+    </Request>
+    <Response name="MAIN">
+      <ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+      <ItemInfo type="DATE" name="PTRQ" descript=" 前置系统日期"/>
+	  <ItemInfo length="8" name="ZJLSH" descript="前置系统流水号"/>
+	  <ItemInfo length="6" name="QTXTBH" descript="前台系统编号"/>
+	  <ItemInfo length="16" name="QTLSH" descript="前台流水号"/>
+	  <ItemInfo length="4" name="ZBS" descript="本次返回交易条数"/>
+	  <ItemInfo name="BZ" length="60"  descript="备注"/>
+	  <ItemInfo name="Z02Header" ref="Z023479Footer"/>
+    </Response>
+    <ExceptResp name="MAIN">
+		<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+	</ExceptResp>
+  </TxnDefine>
+</TxnDefines>

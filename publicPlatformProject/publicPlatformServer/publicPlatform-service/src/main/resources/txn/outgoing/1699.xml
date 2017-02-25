@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : 1699.xml
+    Author     : bigfish
+    Description:
+        	兴业银行 根据账号查询账户信息。
+-->
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+    <TxnDefine id="1699" target="tuxedo" isFixTxnHeader="false">
+        <annotation>根据账号查询账户名</annotation>
+        <Request name="MAIN">
+            <ItemInfo name="header" ref="Z02RequestHeader" descript="Z02请求头"/>
+            <ItemInfo name="ZHDH" length="18" descript="账户代号" notNull="true" />
+            <ItemInfo name="SFBZ" length="1"  notNull="true"  default="0" descript="是否需进行信贷资金流向检查"/>
+        </Request>
+        <Response name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02响应头"/>
+            <ItemInfo name="DQDH" length="2" descript="账号地区代号"/>
+            <ItemInfo name="JGDH" length="3" descript="账号机构代号"/>
+            <ItemInfo name="KMDH" length="6" descript="账号科目代号"/>
+            <ItemInfo name="JLZT" length="1" descript="账号记录状态"/>
+            <ItemInfo name="KHMC" length="60" descript="客户名称"/>
+            <ItemInfo name="ZJHM" length="20" descript="证件号码"/>
+            <ItemInfo name="ZJZL" length="1" descript="证件种类"/>
+            <ItemInfo name="XGZH" length="18" descript="相关账号"/>
+            <ItemInfo name="YWFLBZ" length="8" descript="业务分类标志"/>
+        </Response>
+        <ExceptResp name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+		</ExceptResp>
+    </TxnDefine>
+</TxnDefines>

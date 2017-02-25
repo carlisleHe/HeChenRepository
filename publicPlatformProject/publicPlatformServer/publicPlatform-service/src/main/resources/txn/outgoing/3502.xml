@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="3502" target="Tuxedo" isFixTxnHeader="false">
+		<annotation>查询账户资料</annotation>
+		<Request name="MAIN">
+      <ItemInfo name="header" ref="Z02RequestHeader"/>
+			<ItemInfo name="STREC" type="NUMBER_08_0" descript="起始记录号"/>
+			<ItemInfo name="RECNU" type="NUMBER_03_0" descript="查询记录数"/>
+			<ItemInfo name="SQGY" length="4" descript="授权柜员"/>
+			<ItemInfo name="FWFS" length="1" descript="服务方式-1对客户，2对柜员"/>
+			<ItemInfo name="KH" length="11" descript="卡号"/>
+			<ItemInfo name="MM" length="6" descript="查询密码"/>
+			<ItemInfo name="YW" length="3" descript="业务代号－4:理财账户"/>
+			<ItemInfo name="HBZL" length="2" descript="货币种类－1人民币，14美元，13港币，27日元，00全部"/>
+		</Request>
+		<Response name="MAIN">
+      	  <ItemInfo name="header" ref="Z02ResponseHeader"/>
+	      <ItemInfo name="KHXM" length="60" descript="客户姓名"/>
+	      <CompositeItem name="ZZHXX" infoName="CFCS">
+	        <ItemInfo name="XXH" length="3" descript="小序号"/>
+	        <ItemInfo name="CPMC" length="40" descript="产品名称"/>
+	        <ItemInfo name="ZHDH" length="18" descript="账户代号"/>
+	        <ItemInfo name="YWDH" length="3" descript="业务代号"/>
+	        <ItemInfo name="HBZL" length="2" descript="货币种类"/>
+	        <ItemInfo name="CHBZ" length="1" descript="钞汇标志"/>
+	        <ItemInfo type="NUMBER_15_2" name="ZHYE" descript="帐户余额"/>
+	        <ItemInfo type="NUMBER_15_2" name="KYYE" descript="可用余额"/>
+	        <ItemInfo name="CKQX" length="3" descript="存款期限"/>
+	        <ItemInfo name="XCCQ" length="3" descript="续存存期"/>
+	        <ItemInfo type="DATE" name="KHRQ" descript="开户日期"/>
+	        <ItemInfo type="NUMBER_15_2" name="KHJE" descript="开户金额"/>
+	        <ItemInfo type="DATE" name="DQRQ" descript="到期日期"/>
+	        <ItemInfo name="SFJXBZ" length="1" descript="是否计息标志"/>
+	        <ItemInfo name="JLZT" length="1" descript="记录状态"/>
+	        <ItemInfo name="BZCS" length="5" descript="部分支取次数"/>
+	      </CompositeItem>
+		</Response>
+		<ExceptResp name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader"/>
+            <ItemInfo name="MSGID" type="NUMBER_05_0"/><!-- 信息标识 -->
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+    <TxnDefine id="3905" target="tuxedo" isFixTxnHeader="false">
+        <annotation>上行短信接口</annotation>
+        <Request name="MAIN">
+            <ItemInfo name="header" ref="Z02RequestHeader" descript="Z02请求头"/>
+            <ItemInfo name="XTGZH" length="12" descript="系统跟踪号"  />
+            <ItemInfo name="XTBZ" length="2" descript="系统标志" default="99" />
+            <ItemInfo name="SJHM" length="12" descript="手机号码" notNull="true" />
+            <ItemInfo name="DXNR" length="140" descript="短信内容" notNull="true"/>
+            <ItemInfo name="BZ" length="20" descript="备注"  />
+        </Request>
+         <Response name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02响应头"/>
+        </Response>
+        <ExceptResp name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+		</ExceptResp>
+    </TxnDefine>
+</TxnDefines>

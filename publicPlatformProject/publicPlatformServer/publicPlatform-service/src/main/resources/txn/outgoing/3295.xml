@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="3295" target="tuxedo" isFixTxnHeader="false">
+		<annotation>获取传票流水交易</annotation>
+		<Request name="MAIN">
+			 <ItemInfo name="header" ref="Z02RequestHeader"/>
+			<ItemInfo length="3" name="RECNU" default="1" descript="查询记录数"/>
+			<ItemInfo length="2" name="LB" default="01" descript="类别"/>
+			<ItemInfo length="9" name="WJXH" descript="上次交易查询返回的文件序号"/>
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader"/>
+		    <ItemInfo length="1" name="WJBZ" descript="文件标志,1表示后续还有文件可取，0表示没有"/>
+		    <!-- 文件信息 -->
+            <CompositeItem name="WJXX" infoName="CFCS">
+                <ItemInfo name="WJXH" length="9" descript="文件序号" />
+                <ItemInfo name="WJMC" length="50" descript="文件名" />
+                <ItemInfo name="WJID" length="8" descript="文件ID" />
+            </CompositeItem>
+		</Response>
+		<ExceptResp name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader"/>
+            <ItemInfo name="MSGID" type="NUMBER_05_0"/><!-- 信息标识 -->
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

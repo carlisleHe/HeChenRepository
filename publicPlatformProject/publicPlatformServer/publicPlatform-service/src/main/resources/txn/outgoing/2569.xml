@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="2569" target="tuxedo" isFixTxnHeader="false">
+		<annotation>交易明细查询-最近10笔</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="header" ref="TuxedoRequestHeader"/>
+		   <!--<ItemInfo name="mntrRequestHeader" ref="MntrRequestHeader" descript="MNTR报文头"/>-->
+			<ItemInfo name="KH" length="11" descript="核心卡号" />
+			<ItemInfo name="MM" length="6" descript="查询密码" />
+			<ItemInfo name="QSXH" length="8" descript="起始序号" />
+			<ItemInfo name="QQBS" length="3" descript="请求笔数" />
+		</Request>
+		
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="TuxedoResponseHeader"/>
+		  <!--<ItemInfo name="mntrResponseHeader" ref="MntrResponseHeader" descript="MNTR返回报文头"/>-->
+			<ItemInfo name="KHXM" length="60" descript="客户姓名" />
+			<ItemInfo name="ZHDH" length="11" descript="客户卡号" />
+			<CompositeItem name="JYMX" infoName="CFCS">
+				<ItemInfo name="JYRQ" type="DATETIME" descript="交易时间" />
+				<ItemInfo name="JDBJ" length="1" descript="借贷标记" />
+				<ItemInfo name="JYJE" type="NUMBER_15_2" descript="交易金额" />
+				<ItemInfo name="ZHYE" type="NUMBER_15_2" descript="账户余额" />
+				<ItemInfo name="JYGY" length="4" descript="交易柜员" />
+				<ItemInfo name="ZYDH" length="3" descript="摘要代号" />
+				<ItemInfo name="BZ" length="12" descript="备注信息" />
+			</CompositeItem>
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="header" ref="TuxedoResponseHeader" descript="TUX头"/>
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

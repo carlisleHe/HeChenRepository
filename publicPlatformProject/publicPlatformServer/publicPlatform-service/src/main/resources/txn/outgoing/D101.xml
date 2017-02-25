@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="D101" target="tuxedo">
+		<annotation>账户信息查询</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="header" ref="Z02RequestHeader" descript="Z02请求头"/>
+			<ItemInfo name="JYDM1" length="4" descript="内部交易代码" default="D101"/><!--  -->
+			<ItemInfo name="ZJLX" length="1"  descript="用户证件类型"/><!--  -->
+			<ItemInfo name="ZJHM" length="32" descript="用户证件号码"/><!--  -->
+			<ItemInfo name="ZHDH" length="18" descript="银行卡号"/><!--  -->
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02响应头"/>
+			<ItemInfo name="ZHDH" length="32" descript="银行卡号"/><!--  -->
+			<ItemInfo name="KHMC" length="60" descript="用户姓名"/><!--  -->
+			<ItemInfo name="ZJLX" length="1" descript="用户证件类型"/><!--  -->
+			<ItemInfo name="ZJHM" length="32" descript="用户证件号码"/><!--  -->
+			<ItemInfo name="KHSJ" length="11" descript="用户手机"/><!--  -->
+			<ItemInfo name="ZJLS" type="NUMBER_08_0" notNull="true" descript="总记录数"/><!--  -->
+			<CompositeItem name="KHMX" infoName="CFCS">
+				<ItemInfo name="JJDM" length="6"  descript="基金代码"/><!--  -->
+				<ItemInfo name="JJMC" length="60"  descript="基金名称"/><!--  -->
+				<ItemInfo name="JJBM" length="60" descript="基金别名（页面展示用）"/><!--  -->
+			</CompositeItem>
+		</Response>
+		<ExceptResp name="MAIN">
+	       <ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02异常头"/>
+   		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

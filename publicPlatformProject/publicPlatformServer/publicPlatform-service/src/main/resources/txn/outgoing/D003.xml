@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="D003" target="tuxedo">
+		<annotation>收益信息查询</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="header" ref="Z02RequestHeader" descript="Z02请求头"/>
+			<ItemInfo name="JYDM1" length="4" descript="内部交易代码" default="D003"/>
+			<ItemInfo name="QSRQ" type="DATE" notNull="true" descript="起始日期"/><!--  -->
+			<ItemInfo name="JZRQ" type="DATE" notNull="true" descript="截止日期"/><!-- 时间跨度不超过1年 -->
+			<ItemInfo name="CXYH" type="NUMBER_08_0" notNull="true" descript="查询页号"/><!-- 默认第1页面开始 -->
+			<ItemInfo name="CXJLS" type="NUMBER_02_0" notNull="true" descript="查询记录数"/><!-- 一次查询最多不能超过10条 -->
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02响应头"/>
+			<ItemInfo name="ZJLS" type="NUMBER_08_0" notNull="true" descript="总记录数"/><!--  -->
+			<CompositeItem name="SYMX" infoName="CFCS">
+				<ItemInfo name="RQ" type="DATE" notNull="true" descript="日期"/><!--  -->
+				<ItemInfo name="WFSY" type="NUMBER_15_4" notNull="true" descript="万分收益"/><!--  -->
+				<ItemInfo name="QTNHSY" type="NUMBER_15_4" notNull="true" descript="七天年化收益率"/><!--  -->
+			</CompositeItem>
+		</Response>
+		<ExceptResp name="MAIN">
+	        <ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02异常头"/>
+   		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+	<TxnDefine id="5247" target="Tuxedo" isFixTxnHeader="false">
+		<annotation>客户信息查询</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="Z02RequestHeader" ref="Z02RequestHeader" descript="Z02请求头"/>
+			<!-- 识别方式1：客户唯一编号必填；识别方式2：证件类型与证件号码必填；识别方式3：借记卡、一本通、存单存折、信用卡。
+			               注意：识别方式为空时默认为客户唯一编号识别 -->
+			<ItemInfo name="JYDM1" length="4" descript="内部交易代码" default="0101"/>
+			<ItemInfo name="CifRequestHeader" ref="CifRequestHeader" descript="CIF请求头"/>
+			<ItemInfo name="SBFS" length="1" descript="识别方式" />
+			<ItemInfo name="KHWYBH" length="12" descript="客户唯一编号" default = "" />
+			<ItemInfo name="ZJLX" length="1" descript="证件类型" />
+			<ItemInfo name="ZJHM" length="20" descript="证件号码" default = ""/>
+			<ItemInfo name="KHXM" length="60" descript="客户姓名" default = "" />
+			<ItemInfo name="KZH" length="18" descript="卡账号" />
+			<!-- 客户归属系统：H00100 核心；Z00038 个贷；CIFXYK 信用卡；Z00079 CIF。 
+			              注意：选择H00100时，若客户非核心客户时（例如该客户仅持有本行信用卡），报错处理-->
+			<ItemInfo name="KHGSXT" length="6" descript="客户归属系统" default=""/>
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="Z02ResponseHeader" ref="Z02ResponseHeader" descript="Z02响应头"/>
+			<ItemInfo name="CifResponseHeader" ref="CifResponseHeader" descript="CIF成功响应头"/>
+			<ItemInfo name="KHCFCS" type="NUMBER_04_0" descript="客户重复次数" />
+			<ItemInfo name="DHCFCS" type="NUMBER_04_0" descript="电话重复次数" />
+			<ItemInfo name="DZCFCS" type="NUMBER_04_0" descript="地址重复次数" />
+			<ItemInfo name="KHXM" length="60" descript="客户姓名" />
+			<ItemInfo name="YWXM" length="60" descript="英文姓名" />
+			<ItemInfo name="CW" length="20" descript="称谓" />
+			<ItemInfo name="CYXM" length="60" descript="曾用姓名" />
+			<ItemInfo name="PYM" length="60" descript="拼音名" />
+			<ItemInfo name="ZWJC" length="60" descript="中文简称"/>
+			<ItemInfo name="YWJC" length="60" descript="英文简称" />
+			<ItemInfo name="GJ" length="3" descript="国籍" />
+			<ItemInfo name="CSRQ" length="8" descript="出生日期" />
+			<ItemInfo name="XB" length="1" descript="性别" />
+			<ItemInfo name="HYZK" length="2" descript="婚姻状况" />
+			<ItemInfo name="MZ" length="2" descript="民族"/>
+			<ItemInfo name="JMBZ" length="1" descript="居民标志" />
+			<ItemInfo name="ZJXY" length="2" descript="宗教信仰" />
+			<ItemInfo name="XL" length="2" descript="学历" />
+			<ItemInfo name="XW" length="3" descript="学位" />
+			<ItemInfo name="GZDW" length="60" descript="工作单位" />
+			<ItemInfo name="ZW" length="2" descript="职务" />
+			<ItemInfo name="HY" length="5" descript="行业" />
+			<ItemInfo name="ZY" length="3" descript="职业"/>
+			<ItemInfo name="ZJDQR" length="8" descript="证件到期日" />
+			<ItemInfo name="HJDZ" length="60" descript="户籍地址" />
+			<ItemInfo name="FZJGDM" length="4" descript="发证机构代码" />
+			<ItemInfo name="FZJGMC" length="60" descript="发证机构名称" />
+			<ItemInfo name="SFHSJG" length="2" descript="身份核实结果" />
+			<ItemInfo name="CSD" length="3" descript="出生地"/><!-- 国籍 -->
+			<ItemInfo name="NSRSBH" length="20" descript="纳税人识别号" />
+			<ItemInfo name="NSRZWSM" length="1" descript="纳税人自我申明" />
+			<ItemInfo name="NSRLX" length="1" descript="纳税人类型" />
+			<ItemInfo name="NSRLXZJGXSJ" length="8" descript="纳税人类型最近更新时间" />
+			<ItemInfo name="DZYX" length="60" descript="电子邮箱" />
+			<ItemInfo name="WX" length="60" descript="微信" />
+			<ItemInfo name="KHCJ" length="2" descript="客户层级" />
+			<ItemInfo name="KHCJYJBZ" length="1" descript="客户层级永久标志"/>
+			<ItemInfo name="FXQPJJG" length="2" descript="反洗钱评级结果" />
+			<!-- 系统开通标志第一位代表CIF，第二位代表核心，第三位代表零贷，第四位代表信用卡。‘1’代表开通，‘0’代表未开通
+			               例如：111000（代表该客户是核心和零售信贷客户，非信用卡客户） -->
+			<ItemInfo name="XTKTBZ" length="100" descript="系统开通标志" />
+			<!-- 客户不唯一时返回多组客户组信息（最多返回20笔客户信息），客户唯一时返回客户全貌信息 -->
+			<CompositeItem name="CUSTGROUP" infoName="KHCFCS">	
+				<ItemInfo name="KHWYBH" length="12" descript="客户唯一编号" />
+				<ItemInfo name="ZJLX" length="1" descript="证件类型" />
+				<ItemInfo name="ZJHM" length="20" descript="证件号码"/>
+				<ItemInfo name="ZJKHXM" length="60" descript="证件客户姓名" />
+				<ItemInfo name="WBXTZJHM" length="20" descript="外部系统证件号码" />
+			</CompositeItem>
+			<!-- 最多返回9笔客户信息 -->
+			<CompositeItem name="PHONEGROUP" infoName="DHCFCS">	
+				<ItemInfo name="DHLX" length="4" descript="电话类型" />
+				<ItemInfo name="LXXXH" length="3" descript="类型小序号" />
+				<ItemInfo name="GJDHQH" length="4" descript="国际电话区号"/>
+				<ItemInfo name="GNDHQH" length="4" descript="国内电话区号" />
+				<ItemInfo name="DHHM" length="30" descript="电话号码" />
+				<ItemInfo name="DHFJ" length="15" descript="电话分机" />
+				<ItemInfo name="SJHM" length="30" descript="手机号码" />
+			</CompositeItem>
+			<!-- 最多返回8笔客户信息 -->
+			<CompositeItem name="ADDRGROUP" infoName="DZCFCS">	
+				<ItemInfo name="DZLX" length="4" descript="地址类型" />
+				<ItemInfo name="LXXXH1" length="3" descript="类型小序号" />
+				<ItemInfo name="GJBM" length="3" descript="国家编码"/><!-- 国籍 -->
+				<ItemInfo name="XZQHDM" length="6" descript="行政区划代码" />
+				<ItemInfo name="JDDZ" length="60" descript="街道地址" />
+				<ItemInfo name="XXDZ" length="230" descript="详细地址" />
+				<ItemInfo name="YZBM" length="6" descript="邮政编码" />
+			</CompositeItem>
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader"/>
+			<ItemInfo name="CifExceptRespHeader" ref="CifExceptRespHeader" descript="CIF失败响应头"/>
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

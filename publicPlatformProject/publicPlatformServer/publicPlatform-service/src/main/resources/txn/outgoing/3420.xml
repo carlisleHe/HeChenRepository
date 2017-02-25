@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TxnDefines>
+  <TxnDefine id="3420" target="tuxedo">
+    <annotation>信用卡客户信息查询/修改（转发交易）</annotation>
+    <Request name="MAIN">
+      <ItemInfo name="header" ref="3410TuxdoRequestHeader"/>
+      
+      <ItemInfo name="ZJYDM" length="4" descript="交易代码" default="3420"/>
+      <ItemInfo name="DQDH" length="2" default="06" descript="地区代号"/>
+      <ItemInfo name="JGDH" length="3" default="101" descript="机构代号"/>
+      <ItemInfo name="JYGY" length="4" descript="交易柜员" default="9999"/>
+      <ItemInfo name="ZDDH" length="8" descript="终端代号" default="00000001"/>
+      <ItemInfo name="QDZL" length="3" default="208" descript="渠道种类"/>
+      <ItemInfo name="CZGN" length="1" descript="操作功能		1-查询 2-修改"/>
+      <ItemInfo name="XYK_KH" length="16" descript="信用卡卡号"/>
+      <ItemInfo name="SFJYMM" length="1" default="0" descript="是否校验密码	0-否 1-查询密码 2-取现密码"/>
+      <ItemInfo name="XYKMM" length="6" descript="是否校验密码"/>
+      <ItemInfo name="GJ" length="1" descript="国籍	1-本国 2-外籍"/>
+      <ItemInfo name="HYZK" length="1" descript="婚姻状况		S-未婚，M-已婚，W-丧偶，D-离异，O-其它"/>
+      <ItemInfo name="JYCD" length="2" descript="教育程度		1-初中以下，2-高中/中专，3-大专，4-本科，5-硕士，6-博士"/>
+      <ItemInfo name="ZC" length="2" descript="职称	01-负责人，02-高级主管，03-中级主管，04-基层，05-无"/>
+      <ItemInfo name="JTDH" length="20" descript="家庭电话"/>
+      <ItemInfo name="BGDH" length="20" descript="办公电话"/>
+      <ItemInfo name="FJHM" length="10" descript="分机号码"/>
+      <ItemInfo name="SJH" length="12" descript="手机号"/>
+      <ItemInfo name="EMAIL" length="30" descript="电子邮箱"/>
+      <ItemInfo name="CZHM" length="20" descript="传真号码"/>
+      <ItemInfo type="NUMBER_05_0" name="JZNS" descript="居住年数"/>
+      <ItemInfo name="JZZK" length="1" descript="居住状况	L-与父母同住，R-租用，O-自购无贷款，D-自购有贷款，B-寄宿"/>
+      <ItemInfo name="GSMC" length="30" descript="公司名称"/>
+      <ItemInfo name="GSBM" length="20" descript="公司部门"/>
+      <ItemInfo name="DWZW" length="20" descript="职务"/>
+      <ItemInfo name="DWHY" length="4" descript="行业"/>
+      <ItemInfo name="GSXZ" length="1" descript="公司性质	01-国有，02-独资，03-合资/合作，04-股份制，05-私营，06-其它"/>
+      <ItemInfo type="NUMBER_05_0" name="GZNS" descript="工作年数"/>
+      <ItemInfo type="NUMBER_15_2" name="JE1" descript="年收入"/>
+      <ItemInfo type="NUMBER_15_2" name="JE2" descript="配偶年收入"/>
+    </Request>
+    <Response name="MAIN">
+      <ItemInfo name="header" ref="Z02ResponseHeader" descript=""/>
+      
+      <ItemInfo name="ZWXM" length="20" descript="中文姓名"/>
+      <ItemInfo name="YWXM" length="35" descript="英文姓名"/>
+      <ItemInfo name="ZJZL" length="1" descript="证件种类"/>
+      <ItemInfo name="ZJHM" length="20" descript="证件号码"/>
+      <ItemInfo name="XB" length="1" descript="性别	M-男， F-女"/>
+      <ItemInfo name="GJ" length="1" descript="国籍	1-本国，2-外籍"/>
+      <ItemInfo name="HYZK" length="1" descript="婚姻状况	S-未婚，M-已婚，W-丧偶，D-离异，O-其它"/>
+      <ItemInfo name="JYCD" length="2" descript="教育程度		1-初中以下，2-高中/中专，3-大专，4-本科，5-硕士，6-博士"/>
+      <ItemInfo name="CZ" length="2" descript="职称	01-负责人，02-高级主管，03-中级主管，04-基层，05-无"/>
+      <ItemInfo name="JTDH" length="20" descript="家庭电话"/>
+      <ItemInfo name="BGDH" length="20" descript="办公电话"/>
+      <ItemInfo name="FJHM" length="6" descript="分机号码"/>
+      <ItemInfo name="SJH" length="12" descript="手机号"/>
+      <ItemInfo name="EMAIL" length="30" descript="电子邮箱"/>
+      <ItemInfo name="CZHM" length="20" descript="传真号码"/>
+      <ItemInfo type="NUMBER_04_0" name="JZNS" descript="居住年数"/>
+      <ItemInfo name="JZZK" length="1" descript="居住状况	L-与父母同住，R-租用，O-自购无贷款，D-自购有贷款，B-寄宿"/>
+      <ItemInfo name="GSMC" length="30" descript="公司名称"/>
+      <ItemInfo name="GSBM" length="20" descript="公司部门"/>
+      <ItemInfo name="DWZW" length="20" descript="职务"/>
+      <ItemInfo name="DWHY" length="4" descript="行业"/>
+      <ItemInfo name="GSXZ" length="1" descript="公司性质"/>
+      <ItemInfo type="NUMBER_05_0" name="GZNS" descript="工作年数"/>
+      <ItemInfo type="NUMBER_15_2" name="JE1" descript="年收入"/>
+      <ItemInfo type="NUMBER_15_2" name="JE2" descript="配偶年收入"/>
+      <ItemInfo name="wgzybz" length="1" descript="是否为外国政要标志"/>
+	  <ItemInfo type="DATE" name="zjyxq" descript="证件有效期"/>
+    </Response>
+    <ExceptResp name="MAIN">
+		<ItemInfo name="header" ref="Z02ResponseHeader" />
+		<ItemInfo name="MSGID" type="NUMBER_05_0"/><!-- 信息标识 -->
+	</ExceptResp>
+  </TxnDefine>
+</TxnDefines>

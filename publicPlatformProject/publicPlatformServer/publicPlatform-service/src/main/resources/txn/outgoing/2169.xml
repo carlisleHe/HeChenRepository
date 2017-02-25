@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="2169" target="tuxedo" isFixTxnHeader="false" >
+		<annotation>查询有效凭证代号</annotation>
+		<Request name="MAIN">
+			  <ItemInfo name="header" ref="TuxedoRequestHeader"/>
+			  <!--<ItemInfo name="mntrRequestHeader" ref="MntrRequestHeader" descript="MNTR报文头"/>-->
+		      <ItemInfo length="18" name="ZHDH" descript="账户代号"/><!--账户代号  -->
+		      <ItemInfo length="1" name="CLFS"  descript="处理方式"/><!--处理方式  -->
+		</Request>
+		<Response name="MAIN">
+		      <ItemInfo name="header" ref="TuxedoResponseHeader"/><!--
+			  <ItemInfo name="mntrResponseHeader" ref="MntrResponseHeader" descript="MNTR返回报文头"/>-->
+      		  <ItemInfo length="9" name="PZDH" descript="凭证代号"/>
+      		  <ItemInfo length="9" name="PZDH1" descript="凭证代号1" />
+      		  <ItemInfo length="1" name="PZSYZT" descript="凭证试用状态" />
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="header" ref="TuxedoResponseHeader" descript="TUX头"/>
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="3900"  isFixTxnHeader="false" target="tuxedo" >
+		<annotation>检查凭证密码功能</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="header" ref="Z02RequestHeader"/>
+			<ItemInfo name="ZHDH" length="18" descript="账户代号"/>
+           	<ItemInfo name="MM" length="6"/>
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader"/>
+			<ItemInfo name="PZDH" length="9" descript="凭证代号" />
+			<ItemInfo name="KHDQDH" length="2" descript="开户地区代号" />
+			<ItemInfo name="KHJGDH" length="3" descript="开户机构代号" />
+		</Response>
+		<ExceptResp name="MAIN" >
+            <ItemInfo name="header" ref="Z02ResponseHeader"/>
+            <ItemInfo name="MSGID" type="NUMBER_05_0"/>
+        </ExceptResp>
+	</TxnDefine>
+</TxnDefines>

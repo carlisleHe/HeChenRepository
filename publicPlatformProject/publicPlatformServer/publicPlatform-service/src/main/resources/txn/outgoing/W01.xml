@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+    <TxnDefine id="W01" target="tuxedo" isFixTxnHeader="false">
+        <annotation>上送、修改开户申请信息交易</annotation>
+        <Request name="MAIN">
+            <ItemInfo name="header" ref="Z02RequestHeader" descript="Z02请求头"/>
+            <ItemInfo name="bwzt" length="7500"  descript="json报文体" notNull="true" />
+            
+            
+        </Request>
+         <Response name="MAIN">
+            <ItemInfo name="header" ref="Z02ResponseHeader" descript="Z02响应头"/>
+            <ItemInfo name="bwzt" length="7600" descript="json报文体"/> 
+            
+        </Response>
+        <ExceptResp name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+		</ExceptResp>
+    </TxnDefine>
+</TxnDefines>

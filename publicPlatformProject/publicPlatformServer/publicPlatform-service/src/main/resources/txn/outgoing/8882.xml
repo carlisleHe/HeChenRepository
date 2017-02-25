@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="8882"  target="Tuxedo" isFixTxnHeader="false" >
+		<annotation>账户认证查询服务交易</annotation>
+		<Request name="MAIN">
+		    <ItemInfo name="Z02Header" ref="Z02AcctQueryRequestHeader" descript="Z02头"/>
+            <ItemInfo name="JYDM1" length="4" default="8882"/>
+            <ItemInfo name="DQDH1" length="2"/>
+            <ItemInfo name="JGDH1" length="3"/>
+            <ItemInfo name="JYGY1" length="4"/>
+            <ItemInfo name="ZDDH1" length="8"/>
+            <ItemInfo name="QDZL" length="3" default="208" />
+            <ItemInfo name="XTBH" length="6" default="Q024X0" descript="系统编号"/>
+            <ItemInfo name="RZYW" length="1" default="0" descript="认证业务 0转账支付" />
+            <ItemInfo name="ZHDH" length="18" descript="账户代号" />
+		</Request>
+		<Response name="MAIN">
+		    <ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+		    <ItemInfo name="MSGID1" type="NUMBER_05_0"/>
+            <ItemInfo name="CFCS1" type="NUMBER_04_0"/>
+            <ItemInfo name="JYRQ1" type="DATE"/>
+            <ItemInfo name="JYSJ1" length="6"/>
+            <ItemInfo name="GYLSH1" length="8"/>
+            <CompositeItem name="KTMX" infoName="CFCS">
+                <ItemInfo name="RZGJBH" length="32" descript="认证工具编号" />
+                <ItemInfo name="FWZL" length="1" descript="服务种类1、证书 2、短信 3、令牌" />
+                <ItemInfo name="FWZLX" length="1" descript="0 文件证书, 1 USB证书 ，2 一代预置证书，3 二代预置证书" />
+            </CompositeItem>
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="Z02Header" ref="Z02ResponseHeader" descript="Z02头"/>
+			<ItemInfo name="MSGID" type="NUMBER_05_0"/><!-- 信息标识 -->
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>

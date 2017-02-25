@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<TxnDefine id="3909" target="Tuxedo" isFixTxnHeader="false">
+		<annotation>发普通短信接口</annotation>
+		<Request name="MAIN">
+			<ItemInfo name="header" ref="Z02RequestHeader"/>
+			<ItemInfo length="18" name="ZHDH" descript="账户代号"/>
+			<ItemInfo length="1" name="WJBZ" default="0" descript="文件标识"/><!-- 文件标识 -->
+			<ItemInfo length="30" name="INFILE" descript="输入文件名"/><!-- 输入文件名 -->
+			<ItemInfo length="8" name="JYM" descript="文件校验码"/><!-- 文件校验码 -->
+			<ItemInfo length="3" name="DXLY" descript="短信来源" default="SKL"/><!-- 短信来源 -->
+			<ItemInfo length="2" name="YWLX" default="04" descript="业务类型"/><!-- 业务类型 -->
+			<ItemInfo length="2" name="KHJB" default="01" descript="客户层级"/><!-- 客户层级 -->
+			<ItemInfo length="14" name="TIME" default="0" descript="发送时间"/><!-- 发送时间 -->
+			<ItemInfo length="12" name="SJHM" descript="手机号码"/><!-- 手机号码 -->
+			<ItemInfo length="2" name="DXLX" descript="短信内容" default="L"/><!-- 0：普通短信；8：wappush；L：长短信 -->
+			<ItemInfo length="1000" name="DXNR" descript="短信内容"/><!-- 短信内容 -->
+			<ItemInfo length="20" name="BZ" descript="备注"/><!-- 备注 -->
+		</Request>
+		<Response name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader"/>
+			<ItemInfo length="1" name="WJBZ" default="1" descript="文件标志 填0,即无文件传送" /> <!--文件标志 填0,即无文件传送 -->
+			<ItemInfo length="30" name="OUTFILE" default="" descript="输出文件名 填空格"/> <!-- 输出文件名 填空格-->
+			<ItemInfo length="20" name="BZ" descript="备注 预留字段，以后备用" /> <!-- 备注 预留字段，以后备用-->
+		</Response>
+		<ExceptResp name="MAIN">
+			<ItemInfo name="header" ref="Z02ResponseHeader"/>
+			 <ItemInfo name="MSGID" type="NUMBER_05_0"/><!-- 信息标识 -->
+		</ExceptResp>
+	</TxnDefine>
+</TxnDefines>
+

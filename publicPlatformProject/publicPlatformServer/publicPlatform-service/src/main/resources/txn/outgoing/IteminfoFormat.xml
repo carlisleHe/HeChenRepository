@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TxnDefines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="TxnDefines.xsd">
+	<CommonItemInfo id="MntrRequestHeader">
+		<ItemInfo name="JYDM" descript="交易代码" length="4" />
+		<ItemInfo name="DQDH" descript="地区代号" length="2" default="08" />
+		<ItemInfo name="JGDH" descript="机构代号" length="3" default="101" />
+		<ItemInfo name="JYGY" descript="交易柜员" length="4" default="9995" />
+		<ItemInfo name="ZDDH" descript="终端代号" length="8" default="00000000" />
+	</CommonItemInfo>
+	<CommonItemInfo id="MntrResponseHeader">
+		<ItemInfo name="MSGID" descript="返回响应码" type="NUMBER_05_0" />
+		<ItemInfo name="CFCS" descript="重复次数" type="NUMBER_04_0" />
+		<ItemInfo name="JYRQ" descript="交易日期" type="DATE" />
+		<ItemInfo name="JYSJ" descript="交易时间" type="TIME" />
+		<ItemInfo name="GYLSH" descript="柜员流水" length="8" />
+	</CommonItemInfo>
+
+	<CommonItemInfo id="TuxedoRequestHeader">
+		<ItemInfo name="JYDM" descript="交易代码" length="4" />
+		<ItemInfo name="DQDH" descript="地区代号" length="2" default="08" />
+		<ItemInfo name="JGDH" descript="机构代号" length="3" default="101" />
+		<ItemInfo name="JYGY" descript="交易柜员" length="4" default="9995" />
+		<ItemInfo name="ZDDH" desclript="终端代号" length="8" default="00000000" />
+		<ItemInfo name="QTLSH" descript="前台流水号" length="16" />
+		<ItemInfo name="TYSQGY" descript="统一授权柜员" length="4" />
+		<ItemInfo name="TYSQMM" descript="统一授权密码" length="16" />
+		<ItemInfo name="FJQDZL" descript="附加渠道种类" length="3" default="208" />
+		<ItemInfo name="SCCFCS" descript="上传重复次数" length="4" />
+		<ItemInfo name="JKBB" descript="接口版本" length="2" />
+		<ItemInfo name="JYTBL" descript="交易保留头" length="20" />
+	</CommonItemInfo>
+	<CommonItemInfo id="TuxedoResponseHeader">
+		<ItemInfo name="JYDM" descript="交易代码" length="4" />
+		<ItemInfo name="JYRQ" descript="交易日期" type="DATE" />
+		<ItemInfo name="JYSJ" descript="交易时间" type="TIME" />
+		<ItemInfo name="MSGID" descript="响应码" type="NUMBER_05_0" />
+		<ItemInfo name="CFCS" descript="下传重复次数" type="NUMBER_04_0" />
+		<ItemInfo name="JYGZH" descript="交易跟踪号" length="16" />
+		<ItemInfo name="GYLSH" descript="柜员流水号" length="8" />
+	</CommonItemInfo>
+
+	<CommonItemInfo id="Z02RequestHeader">
+		<ItemInfo name="JYTBBH" descript="交易头版本号" length="3" default="Z02" />
+		<ItemInfo name="JYDM" descript="交易代码" length="4" />
+		<ItemInfo name="DQDH" descript="地区代号" length="2" default="08" />
+		<ItemInfo name="JGDH" descript="机构代号" length="3" default="101" />
+		<ItemInfo name="JYGY" descript="交易柜员" length="4" default="9995" />
+		<ItemInfo name="ZDDH" descript="终端代号" length="8" default="00000000" />
+		<ItemInfo name="QTJYLSH" descript="前台交易流水号" length="30" />
+		<ItemInfo name="QTYHDH" descript="前台用户代号" length="10" />
+		<ItemInfo name="QTJYBM" descript="前台交易编码" length="8" default="00000008"/>
+		<ItemInfo name="QTYWTH" descript="前台业务套号" length="16" />
+		<ItemInfo name="TYSQGY" descript="统一授权柜员" length="4" />
+		<ItemInfo name="TYSQMM" descript="统一授权密码" length="16" />
+		<ItemInfo name="FJQDZL" descript="附加渠道种类" length="3" default="208" />
+		<ItemInfo name="SCCFCS" descript="上传重复次数" length="4" />
+		<ItemInfo name="SCWJBZ" descript="上传文件标志" length="1" />
+		<ItemInfo name="SCWJM" descript="上传文件名" length="128" />
+		<ItemInfo name="WJID" descript="文件ID" length="8" />
+		<ItemInfo name="JKBB" descript="接口版本" length="2" />
+		<ItemInfo name="SFXGXX" descript="收费相关信息" length="24" />
+		<ItemInfo name="KHMMJMFS" descript="客户密码加密方式" length="1" />
+		<ItemInfo name="JYBLT" descript="交易保留头" length="20" />
+	</CommonItemInfo>
+		
+	<CommonItemInfo id="Z02DCQueryRequestHeader">
+		<ItemInfo name="JYTBBH" descript="交易头版本号" length="3" default="Z02" />
+		<ItemInfo name="JYDM" descript="交易代码" length="4" default="3410"/>
+		<ItemInfo name="DQDH" descript="地区代号" length="2" default="08" />
+		<ItemInfo name="JGDH" descript="机构代号" length="3" default="101" />
+		<ItemInfo name="JYGY" descript="交易柜员" length="4" default="9995" />
+		<ItemInfo name="ZDDH" descript="终端代号" length="8" default="00000000" />
+		<ItemInfo name="QTJYLSH" descript="前台交易流水号" length="30" />
+		<ItemInfo name="QTYHDH" descript="前台用户代号" length="10" />
+		<ItemInfo name="QTJYBM" descript="前台交易编码" length="8" default="00000008"/>
+		<ItemInfo name="QTYWTH" descript="前台业务套号" length="16" />
+		<ItemInfo name="TYSQGY" descript="统一授权柜员" length="4" />
+		<ItemInfo name="TYSQMM" descript="统一授权密码" length="16" />
+		<ItemInfo name="FJQDZL" descript="附加渠道种类" length="3" default="208" />
+		<ItemInfo name="SCCFCS" descript="上传重复次数" length="4" />
+		<ItemInfo name="SCWJBZ" descript="上传文件标志" length="1" />
+		<ItemInfo name="SCWJM" descript="上传文件名" length="128" />
+		<ItemInfo name="WJID" descript="文件ID" length="8" />
+		<ItemInfo name="JKBB" descript="接口版本" length="2" />
+		<ItemInfo name="SFXGXX" descript="收费相关信息" length="24" />
+		<ItemInfo name="KHMMJMFS" descript="客户密码加密方式" length="1" />
+		<ItemInfo name="JYBLT" descript="交易保留头" length="20" />
+	</CommonItemInfo>
+	
+		<CommonItemInfo id="Z02CCQueryRequestHeader">
+		<ItemInfo name="JYTBBH" descript="交易头版本号" length="3" default="Z02" />
+		<ItemInfo name="JYDM" descript="交易代码" length="4" default="3410"/>
+		<ItemInfo name="DQDH" descript="地区代号" length="2" default="06" />
+		<ItemInfo name="JGDH" descript="机构代号" length="3" default="101" />
+		<ItemInfo name="JYGY" descript="交易柜员" length="4" default="9995" />
+		<ItemInfo name="ZDDH" descript="终端代号" length="8" default="00000000" />
+		<ItemInfo name="QTJYLSH" descript="前台交易流水号" length="30" />
+		<ItemInfo name="QTYHDH" descript="前台用户代号" length="10" />
+		<ItemInfo name="QTJYBM" descript="前台交易编码" length="8" default="00000008"/>
+		<ItemInfo name="QTYWTH" descript="前台业务套号" length="16" />
+		<ItemInfo name="TYSQGY" descript="统一授权柜员" length="4" />
+		<ItemInfo name="TYSQMM" descript="统一授权密码" length="16" />
+		<ItemInfo name="FJQDZL" descript="附加渠道种类" length="3" default="208" />
+		<ItemInfo name="SCCFCS" descript="上传重复次数" length="4" />
+		<ItemInfo name="SCWJBZ" descript="上传文件标志" length="1" />
+		<ItemInfo name="SCWJM" descript="上传文件名" length="128" />
+		<ItemInfo name="WJID" descript="文件ID" length="8" />
+		<ItemInfo name="JKBB" descript="接口版本" length="2" />
+		<ItemInfo name="SFXGXX" descript="收费相关信息" length="24" />
+		<ItemInfo name="KHMMJMFS" descript="客户密码加密方式" length="1" />
+		<ItemInfo name="JYBLT" descript="交易保留头" length="20" />
+	</CommonItemInfo>
+	
+	<CommonItemInfo id="Z02AcctQueryRequestHeader">
+		<ItemInfo name="JYTBBH" descript="交易头版本号" length="3" default="Z02" />
+		<ItemInfo name="JYDM" descript="交易代码" length="4" default="3945"/>
+		<ItemInfo name="DQDH" descript="地区代号" length="2" default="08" />
+		<ItemInfo name="JGDH" descript="机构代号" length="3" default="101" />
+		<ItemInfo name="JYGY" descript="交易柜员" length="4" default="9995" />
+		<ItemInfo name="ZDDH" descript="终端代号" length="8" default="00000000" />
+		<ItemInfo name="QTJYLSH" descript="前台交易流水号" length="30" />
+		<ItemInfo name="QTYHDH" descript="前台用户代号" length="10" />
+		<ItemInfo name="QTJYBM" descript="前台交易编码" length="8" default="00000008"/>
+		<ItemInfo name="QTYWTH" descript="前台业务套号" length="16" />
+		<ItemInfo name="TYSQGY" descript="统一授权柜员" length="4" />
+		<ItemInfo name="TYSQMM" descript="统一授权密码" length="16" />
+		<ItemInfo name="FJQDZL" descript="附加渠道种类" length="3" default="208" />
+		<ItemInfo name="SCCFCS" descript="上传重复次数" length="4" />
+		<ItemInfo name="SCWJBZ" descript="上传文件标志" length="1" />
+		<ItemInfo name="SCWJM" descript="上传文件名" length="128" />
+		<ItemInfo name="WJID" descript="文件ID" length="8" />
+		<ItemInfo name="JKBB" descript="接口版本" length="2" />
+		<ItemInfo name="SFXGXX" descript="收费相关信息" length="24" />
+		<ItemInfo name="KHMMJMFS" descript="客户密码加密方式" length="1" />
+		<ItemInfo name="JYBLT" descript="交易保留头" length="20" />
+	</CommonItemInfo>
+	
+	<CommonItemInfo id="Z02ResponseHeader">
+		<ItemInfo name="JYTBBH" descript="" length="3" />
+		<ItemInfo name="JYDM" descript="交易代码" length="4" />
+		<ItemInfo name="JYRQ" descript="交易日期" type="DATE" />
+		<ItemInfo name="JYSJ" descript="交易时间" type="TIME" />
+		<ItemInfo name="MSGID" descript="信息标识" type="NUMBER_05_0" />
+		<ItemInfo name="CFCS" descript="下传重复次数" type="NUMBER_04_0" />
+		<ItemInfo name="HXJYLSBH" descript="核心交易流水编号" length="30" />
+		<ItemInfo name="GYLSH" descript="柜员流水" length="8" />
+		<ItemInfo name="XCWJBZ" descript="下传文件标识" length="1" />
+		<ItemInfo name="XCWJM" descript="下传文件名" length="128" />
+		<ItemInfo name="WJID" descript="文件ID" length="8" />
+		<ItemInfo name="JYBLT" descript="交易保留头" length="20" />
+	</CommonItemInfo>
+
+	<CommonItemInfo id="Z023479RequestHeader">
+		<ItemInfo name="JYTBBH" descript="交易头版本号" length="3" default="Z02" />
+		<ItemInfo name="JYDM" descript="交易代码" length="4" default="3479"/>
+		<ItemInfo name="DQDH" descript="地区代号" length="2" default="08" />
+		<ItemInfo name="JGDH" descript="机构代号" length="3" default="101" />
+		<ItemInfo name="JYGY" descript="交易柜员" length="4" default="9995" />
+		<ItemInfo name="ZDDH" descript="终端代号" length="8" default="00000000" />
+		<ItemInfo name="QTJYLSH" descript="前台交易流水号" length="30" />
+		<ItemInfo name="QTYHDH" descript="前台用户代号" length="10" />
+		<ItemInfo name="QTJYBM" descript="前台交易编码" length="8" default="00000008"/>
+		<ItemInfo name="QTYWTH" descript="前台业务套号" length="16" />
+		<ItemInfo name="TYSQGY" descript="统一授权柜员" length="4" />
+		<ItemInfo name="TYSQMM" descript="统一授权密码" length="16" />
+		<ItemInfo name="FJQDZL" descript="附加渠道种类" length="3" default="208" />
+		<ItemInfo name="SCCFCS" descript="上传重复次数" length="4" />
+		<ItemInfo name="SCWJBZ" descript="上传文件标志" length="1" />
+		<ItemInfo name="SCWJM" descript="上传文件名" length="128" />
+		<ItemInfo name="WJID" descript="文件ID" length="8" />
+		<ItemInfo name="JKBB" descript="接口版本" length="2" />
+		<ItemInfo name="SFXGXX" descript="收费相关信息" length="24" />
+		<ItemInfo name="KHMMJMFS" descript="客户密码加密方式" length="1" />
+		<ItemInfo name="JYBLT" descript="交易保留头" length="20" />
+		<ItemInfo name="CKHM" descript="IC卡应用标识" length="32" />
+		<ItemInfo name="JZBZ" descript="介质标志:1:磁条卡2:IC卡7:无卡" length="1" />
+		<ItemInfo name="XHCS" descript="IC卡认证信息个数" length="1" />
+	</CommonItemInfo>
+	<CommonItemInfo id="Z023479Footer">
+		<ItemInfo name="HS1" descript="IC卡安全认证信息长度:0表示无" length="3" />
+		<ItemInfo name="ICAQRZXX1" descript="IC卡安全认证信息" length="255"/>
+		<ItemInfo name="JKKH1" descript="IC卡号1:参与arqc认证" length="19"/>
+		<ItemInfo name="ICKXH1" descript="IC卡小序号1:参与arqc认证" length="2"/>
+		<ItemInfo name="HS2" descript="IC卡安全认证信息长度：0表示无" length="3" />
+		<ItemInfo name="ICAQRZXX2" descript="IC卡安全认证信息" length="255" />
+		<ItemInfo name="JKKH2" descript="IC卡号2：参与arqc认证" length="19" />
+		<ItemInfo name="ICHXH2" descript="IC卡小序号2：参与arqc认证" length="2" />
+	</CommonItemInfo>
+	<CommonItemInfo id="Request3410Header">
+		<ItemInfo name="ZFJYDM" descript="" length="4" default="3410" />
+		<ItemInfo name="ZFDQDH" length="2" descript="" default="06"/>
+		<ItemInfo name="ZFJGDH" length="3" descript="" default="101"/>
+		<ItemInfo name="ZFJYGY" length="4" descript="" default="9995"/>
+		<ItemInfo name="ZFZDDH" length="8" descript="" default="00000001"/>
+		<ItemInfo name="JYDM" length="4" descript="" default="3410" />
+		<ItemInfo name="DQDH" length="2" descript="" default="06"/>
+		<ItemInfo name="JGDH" length="3" descript="" default="101"/>
+		<ItemInfo name="JYGY" length="4" descript="" default="9995"/>
+		<ItemInfo name="ZDDH" length="8" descript="" default="00000001"/>
+	</CommonItemInfo>
+	<CommonItemInfo id="3410TuxdoRequestHeader">
+			<ItemInfo name="JYTBBH" length="3" default="Z02"/>
+			<ItemInfo name="JYDM0" length="4" descript="交易代码" default="3410"/>
+			<ItemInfo name="DQDH0" length="2" descript="地区代号" default="06" />
+			<ItemInfo name="JGDH0" length="3" descript="机构代号" default="101"/>
+			<ItemInfo name="JYGY0" length="4" descript="交易柜员" default="9995"/>
+			<ItemInfo name="ZDDH0" length="8" descript="终端代号" default="00000001"/>
+			<ItemInfo name="QTJYLSH" length="30"/>
+			<ItemInfo name="QTYHDH" length="10"/>
+			<ItemInfo name="QTJYBM" length="8"/>
+			<ItemInfo name="QTYWTH" length="16"/>
+			<ItemInfo name="TYSQGY" length="4"/>
+			<ItemInfo name="TYSQMM" length="16"/>
+			<ItemInfo name="FJQDZL" length="3" default="208"/>
+			<ItemInfo name="SCCFCS" length="4"/>
+			<ItemInfo name="SCWJBZ" length="1"/>
+			<ItemInfo name="SCWJM" length="128"/>
+			<ItemInfo name="WJID" length="8"/>
+			<ItemInfo name="JYBB" length="2" />
+			<ItemInfo name="SFXGXX"  length="24"/>
+			<ItemInfo name="KHMMJMFS" length="1"/>
+			<ItemInfo name="JYTBL" length="20"/>
+	</CommonItemInfo>
+
+	<CommonItemInfo id="Request3490Header">
+		<ItemInfo name="JYDM1" length="4" default="3490" descript="" />	<!-- 交易代码 -->
+		<ItemInfo name="DQDH1" length="2" default="21" descript="" /> <!-- 地区代号 -->
+		<ItemInfo name="JGDH1" length="3" descript="" /><!-- 机构代号 -->
+		<ItemInfo name="JYGY1" length="4" descript="" /><!-- 交易柜员 -->
+		<ItemInfo name="ZDDH1" length="8" descript="" /><!-- 终端代号 -->
+		<ItemInfo name="QTLSH" length="16" descript="" /><!-- 前台流水号	-->
+		<ItemInfo name="TYSQGY" length="4" descript="" /><!-- 统一授权柜员 -->
+		<ItemInfo name="TYSQMM" length="16" descript="" /><!-- 统一授权密码 -->
+		<ItemInfo name="FJQDZL" length="3" descript="" /><!-- 附加渠道种类 -->
+		<ItemInfo name="SCCFCS" length="4" descript="" /><!-- 上传重复次数 -->
+		<ItemInfo name="JKBB" length="2" descript="" /><!-- 接口版本 -->
+		<ItemInfo name="JYTBL" length="20" descript="" /><!-- 交易头保留 	-->
+		<ItemInfo name="YWLX" length="3" default="001" descript="" /><!-- 业务类型 -->
+		<ItemInfo name="FQRQ" type="DATE" descript="" /><!-- 发起日期 -->
+		<ItemInfo name="FQSJ" type="TIME" descript="" /><!-- 发起时间 -->
+		<ItemInfo name="WJBZ" length="1" default="0" descript="" /><!--	文件标志	-->
+		<ItemInfo name="WJCSMS" length="1" default="1" descript="" /><!--文件传送模式-->
+		<ItemInfo name="WJMAC" length="16" descript="" /><!--文件校验值-->
+		<ItemInfo name="WJMC" length="30" descript="" /><!-- 文件名称 -->
+		<ItemInfo name="JYDM" length="4" descript="" /><!-- 交易代码 -->
+		<ItemInfo name="DQDH" length="2" default="99" descript="" /><!--地区代号	-->
+		<ItemInfo name="JGDH" length="3" descript="" /><!-- 机构代号 -->
+		<ItemInfo name="JYGY" length="4" descript="" /><!-- 交易柜员 -->
+		<ItemInfo name="ZDDH" length="8" descript="" /><!-- 终端代号 -->
+		<ItemInfo name="QDBS" length="3" default="204" descript="" /><!--渠道标识-->
+		<ItemInfo length="2" name="CZZL" default="01" descript="" /> <!-- 操作种类  01-网上支付；02-卡通支付-->
+	</CommonItemInfo>
+	<CommonItemInfo id="Response3490Header">
+		<ItemInfo name="JYDM" length="4" descript="" />
+		<ItemInfo name="JYRQ" type="DATE" descript="" />
+		<ItemInfo name="JYSJ" type="TIME" descript="" />
+		<ItemInfo name="MSGID" type="NUMBER_05_0" descript="" />
+		<ItemInfo name="CFCS" type="NUMBER_04_0" descript="" />
+		<ItemInfo name="JYGZH" length="16" descript="" />
+		<ItemInfo name="GYLSH" length="8" descript="" />
+		<ItemInfo name="WJBZ" length="1" default="0" descript="" /><!--	文件标志	-->
+		<ItemInfo name="WJCSMS" length="1" descript="" /><!--文件传输模式-->
+		<ItemInfo name="WJMAC" length="16" descript="" /><!--文件MAC	-->
+		<ItemInfo name="WJMC" length="30" descript="" /><!-- 文件名称 -->
+	</CommonItemInfo>
+	
+	<CommonItemInfo id="Request1225Header">
+		<ItemInfo name="JYDM1" descript="交易代码" length="4" default="1225"/>
+		<ItemInfo name="DQDH1" descript="地区代号" length="2" default="08" />
+		<ItemInfo name="JGDH1" descript="机构代号" length="3" default="101" />
+		<ItemInfo name="JYGY1" descript="交易柜员" length="4" default="9995" />
+		<ItemInfo name="ZDDH1" descript="终端代号" length="8" default="00000000" />
+		<ItemInfo name="JYDM" descript="" length="4" default=""/><!-- 交易代码 -->
+		<ItemInfo name="DQDH" descript="" length="2" default="08" /><!-- 地区代号 -->
+		<ItemInfo name="JGDH" descript="" length="3" default="101" /><!-- 机构代号 -->
+		<ItemInfo name="JYGY" descript="" length="4" default="9995" /><!-- 交易柜员 -->
+		<ItemInfo name="ZDDH" descript="" length="8" default="00000000" /><!-- 终端代号 -->
+	</CommonItemInfo>
+	<CommonItemInfo id="Response1225Header">
+		<ItemInfo name="MSGID" descript="返回响应码" type="NUMBER_05_0" />
+		<ItemInfo name="CFCS" descript="重复次数" type="NUMBER_04_0" />
+		<ItemInfo name="JYRQ" descript="交易日期" type="DATE" />
+		<ItemInfo name="JYSJ" descript="交易时间" type="TIME" />
+		<ItemInfo name="GYLSH" descript="柜员流水" length="8" />
+		<ItemInfo name="MSGID1" descript="返回响应码" type="NUMBER_05_0" />
+        <ItemInfo name="CFCS1" descript="重复次数" type="NUMBER_04_0" />
+        <ItemInfo name="JYRQ1" descript="交易日期" type="DATE" />
+        <ItemInfo name="JYSJ1" descript="交易时间" type="TIME" />
+        <ItemInfo name="GYLSH1" descript="柜员流水" length="8" />
+	</CommonItemInfo>
+	<!-- 理财产品Tuxedo输入公共报文头 -->
+	<CommonItemInfo id="FinancialProductRequestHeader">
+		<ItemInfo name="JYDM" length="4" null="false" descript="交易代码"/> 
+		<ItemInfo name="DQDH" length="2" default="08" null="false" descript="地区代号"/> 
+		<ItemInfo name="JGDH" length="3" default="101" null="false" descript="机构代号"/> 
+		<ItemInfo name="JYGY" length="4" null="false" descript="交易柜员"/> 
+		<ItemInfo name="ZDDH" length="8" null="false" descript="终端代号"/> 
+		<ItemInfo name="ZDLSH" length="16" descript="前台流水号:为前置系统冲正方式保留"/> 
+		<ItemInfo name="SQGY" length="4" descript="统一授权柜员:为使用统一授权保留 "/> 
+		<ItemInfo name="SQMM" length="16" descript="统一授权密码:为使用统一授权保留"/> 
+		<ItemInfo name="QDZL" length="3" default="208" descript="附加渠道种类"/> 
+		<ItemInfo name="SCCFCS" type="NUMBER_04_0" descript="上传重复次数:上传包多笔的笔数 "/> 
+		<ItemInfo name="JKBB" length="2" descript="接口版本:为一个交易使用不同的接口使用,与后台定义的接口中的版本号相对应,其版本从'01'开始递增"/> 
+		<ItemInfo name="JYTBL" length="20" descript="交易头保留:为扩展交易的保留字段,此数据项可以将来用做多个字段使用"/> 
+		<ItemInfo name="SVCNM" length="15" descript="5202填FP_U,5203填FP_U,5204填FP_I,5205填FP_I,5217填FP_I"/>
+		<ItemInfo name="HCODE" length="1" default="0" null="false" descript="固定送0"/>
+		<ItemInfo name="F4XTGZH" length="23" descript="系统跟踪号"/>
+	</CommonItemInfo>
+	<!-- 理财产品Tuxedo输出公共报文头 -->
+	<CommonItemInfo id="FinancialProductResponseHeader">
+		<ItemInfo name="JYDM" length="4" descript="交易代码"/>
+		<ItemInfo name="JYRQ" length="8" descript="交易日期"/>
+		<ItemInfo name="JYSJ" length="6" descript="交易时间"/>
+		<ItemInfo name="MSGID" type="NUMBER_05_0" descript="0表示交易成功"/>
+		<ItemInfo name="XCCFCS" type="NUMBER_04_0" descript="下传重复次数"/>
+		<ItemInfo name="JYGZH" length="16" descript="交易跟踪号"/>
+		<ItemInfo name="GYLSH" length="8" descript="柜员流水号"/>
+		<ItemInfo name="MSGEND" length="1" descript="报文结束标志 对柜面无用,仅接收,不处理"/>
+		<ItemInfo name="MSGLNG" length="4" descript="报文长度  对柜面无用,仅接收,不处理"/>
+	</CommonItemInfo>
+	<!-- Cif -->
+   <CommonItemInfo id="CifRequestHeader">
+		<ItemInfo name="DQDH1" length="2" default="08" descript="地区代号(转发头)" />
+		<ItemInfo name="JGDH1" length="3" default="101" descript="机构代号(转发头)" />
+		<ItemInfo name="JYGY1" length="4" default="9999" descript="交易柜员(转发头)" />
+		<ItemInfo name="ZDDH1" length="8" default="111" descript="终端代号(转发头)" />
+		<ItemInfo name="XTBH" length="6" default="Z00049" descript="参考核心提供的前台系统编号" />
+		<ItemInfo name="QTJYLSBH" length="30" descript="前台交易流水编号" />
+		<ItemInfo name="FRDM" length="2" default="01" descript="法人代码，固定值：01" />
+		<ItemInfo name="SQGY" length="4" descript="授权柜员" />
+		<ItemInfo name="JKBB1" length="2" default="01" descript="接口版本，固定值：01" />
+	</CommonItemInfo>
+	
+	<CommonItemInfo id="CifResponseHeader">
+		<ItemInfo name="MSGID1" type="NUMBER_05_0" descript="信息标识(CIF成功响应头)"/>
+		<ItemInfo name="CFCS1" type="NUMBER_04_0" descript="重复次数(CIF成功响应头)"/>
+		<ItemInfo name="JYRQ1" type="DATE" descript="交易日期 (CIF成功响应头)"/>
+		<ItemInfo name="JYSJ1" type="TIME" descript="交易时间(CIF成功响应头)"/>
+		<ItemInfo name="GYLSH1" length="8" descript="柜员流水号(CIF成功响应头)"/>
+		<ItemInfo name="CIFLSH" length="30" descript="CIF流水号(CIF成功响应头)"/>
+	</CommonItemInfo>
+	
+	<CommonItemInfo id="CifExceptRespHeader">
+		<ItemInfo name="MSGID1" type="NUMBER_05_0" descript="信息标识(CIF失败响应头)"/>
+		<ItemInfo name="ERRMSG" length="60" descript="错误描述(CIF失败响应头)"/>
+	</CommonItemInfo>
+	<ItemInfoFormat id="NUMBER_09_4" infoType="BIGDECIMAL_TYPE"
+		length="9" scale="4" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_09_7" infoType="BIGDECIMAL_TYPE"
+		length="9" scale="7" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_19_2" infoType="BIGDECIMAL_TYPE"
+		length="19" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_18_2" infoType="BIGDECIMAL_TYPE"
+		length="18" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_22_2" infoType="BIGDECIMAL_TYPE"
+		length="22" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_17_2" infoType="BIGDECIMAL_TYPE"
+		length="17" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_14_6" infoType="BIGDECIMAL_TYPE"
+		length="14" scale="6" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_11_7" infoType="BIGDECIMAL_TYPE"
+		length="11" scale="7" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_10_5" infoType="BIGDECIMAL_TYPE"
+		length="10" scale="5" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_10_2" infoType="BIGDECIMAL_TYPE"
+		length="10" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_08_4" infoType="BIGDECIMAL_TYPE"
+		length="8" scale="4" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_08_3" infoType="BIGDECIMAL_TYPE"
+		length="8" scale="3" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_05_2" infoType="BIGDECIMAL_TYPE"
+		length="5" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_06_0" infoType="NUMBER_TYPE"
+		length="6" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_12_2" infoType="NUMBER_TYPE"
+		length="12" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_12_0" infoType="NUMBER_TYPE"
+		length="12" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_10_0" infoType="NUMBER_TYPE"
+		length="10" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_09_0" infoType="NUMBER_TYPE"
+		length="10" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_07_0" infoType="NUMBER_TYPE"
+		length="7" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_02_0" infoType="NUMBER_TYPE"
+		length="2" scale="0" encrypt="false" />
+	<ItemInfoFormat id="PASSWORD12" infoType="CHARACTER_TYPE"
+		length="12" scale="0" encrypt="true" />
+	<ItemInfoFormat id="PASSWORD" infoType="CHARACTER_TYPE"
+		length="6" scale="2" encrypt="true" />
+	<ItemInfoFormat id="TIME" infoType="TIME_TYPE" length="6"
+		scale="0" encrypt="false" />
+	<ItemInfoFormat id="DATETIME" infoType="DATETIME_TYPE"
+		length="14" scale="0" encrypt="false" />
+	<ItemInfoFormat id="DATE" infoType="DATE_TYPE" length="8"
+		scale="0" encrypt="false" />
+	<ItemInfoFormat id="STOCK_BIGAMOUNT" infoType="BIGDECIMAL_TYPE"
+		length="16" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_14_4" infoType="BIGDECIMAL_TYPE"
+		length="14" scale="4" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_13_0" infoType="NUMBER_TYPE"
+		length="13" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_08_0" infoType="NUMBER_TYPE"
+		length="8" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_03_0" infoType="NUMBER_TYPE"
+		length="3" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_05_0" infoType="NUMBER_TYPE"
+		length="5" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_04_0" infoType="NUMBER_TYPE"
+		length="4" scale="0" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_15_2" infoType="BIGDECIMAL_TYPE"
+		length="15" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_14_2" infoType="BIGDECIMAL_TYPE"
+		length="14" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_08_5" infoType="NUMBER_TYPE"
+		length="8" scale="5" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_08_2" infoType="NUMBER_TYPE"
+		length="8" scale="2" encrypt="false" />
+	<ItemInfoFormat id="NUMBER_15_4" infoType="BIGDECIMAL_TYPE" 
+		length="15" scale="4" encrypt="false"/>
+</TxnDefines>
